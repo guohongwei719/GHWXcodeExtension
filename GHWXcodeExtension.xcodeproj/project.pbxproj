@@ -1,0 +1,531 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EDA60A402317F41000B5FA3D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA60A3F2317F41000B5FA3D /* AppDelegate.m */; };
+		EDA60A432317F41000B5FA3D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA60A422317F41000B5FA3D /* ViewController.m */; };
+		EDA60A452317F41000B5FA3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDA60A442317F41000B5FA3D /* Assets.xcassets */; };
+		EDA60A482317F41000B5FA3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA60A462317F41000B5FA3D /* Main.storyboard */; };
+		EDA60A4B2317F41000B5FA3D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA60A4A2317F41000B5FA3D /* main.m */; };
+		EDA60A592317F43500B5FA3D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA60A582317F43500B5FA3D /* Cocoa.framework */; };
+		EDA60A5D2317F43500B5FA3D /* SourceEditorExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA60A5C2317F43500B5FA3D /* SourceEditorExtension.m */; };
+		EDA60A602317F43500B5FA3D /* SourceEditorCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA60A5F2317F43500B5FA3D /* SourceEditorCommand.m */; };
+		EDA60A652317F43500B5FA3D /* GHWExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EDA60A562317F43500B5FA3D /* GHWExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EDA60A732317F4BF00B5FA3D /* ASAutoLayoutViewCode.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA60A6C2317F4BF00B5FA3D /* ASAutoLayoutViewCode.m */; };
+		EDA60A742317F4BF00B5FA3D /* ASAutoLayoutCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA60A6D2317F4BF00B5FA3D /* ASAutoLayoutCommand.m */; };
+		EDA60A752317F4BF00B5FA3D /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA60A722317F4BF00B5FA3D /* NSString+Extension.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EDA60A632317F43500B5FA3D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDA60A332317F41000B5FA3D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EDA60A552317F43500B5FA3D;
+			remoteInfo = GHWExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EDA60A692317F43500B5FA3D /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				EDA60A652317F43500B5FA3D /* GHWExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		EDA60A3B2317F41000B5FA3D /* GHWXcodeExtension.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GHWXcodeExtension.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDA60A3E2317F41000B5FA3D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		EDA60A3F2317F41000B5FA3D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		EDA60A412317F41000B5FA3D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		EDA60A422317F41000B5FA3D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		EDA60A442317F41000B5FA3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EDA60A472317F41000B5FA3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EDA60A492317F41000B5FA3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDA60A4A2317F41000B5FA3D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EDA60A4C2317F41000B5FA3D /* GHWXcodeExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GHWXcodeExtension.entitlements; sourceTree = "<group>"; };
+		EDA60A562317F43500B5FA3D /* GHWExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = GHWExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDA60A582317F43500B5FA3D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		EDA60A5B2317F43500B5FA3D /* SourceEditorExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SourceEditorExtension.h; sourceTree = "<group>"; };
+		EDA60A5C2317F43500B5FA3D /* SourceEditorExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SourceEditorExtension.m; sourceTree = "<group>"; };
+		EDA60A5E2317F43500B5FA3D /* SourceEditorCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SourceEditorCommand.h; sourceTree = "<group>"; };
+		EDA60A5F2317F43500B5FA3D /* SourceEditorCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SourceEditorCommand.m; sourceTree = "<group>"; };
+		EDA60A612317F43500B5FA3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDA60A622317F43500B5FA3D /* GHWExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GHWExtension.entitlements; sourceTree = "<group>"; };
+		EDA60A6A2317F4BF00B5FA3D /* ASConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASConst.h; sourceTree = "<group>"; };
+		EDA60A6C2317F4BF00B5FA3D /* ASAutoLayoutViewCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASAutoLayoutViewCode.m; sourceTree = "<group>"; };
+		EDA60A6D2317F4BF00B5FA3D /* ASAutoLayoutCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASAutoLayoutCommand.m; sourceTree = "<group>"; };
+		EDA60A6E2317F4BF00B5FA3D /* ASAutoLayoutViewCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASAutoLayoutViewCode.h; sourceTree = "<group>"; };
+		EDA60A6F2317F4BF00B5FA3D /* ASAutoLayoutCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASAutoLayoutCommand.h; sourceTree = "<group>"; };
+		EDA60A712317F4BF00B5FA3D /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
+		EDA60A722317F4BF00B5FA3D /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EDA60A382317F41000B5FA3D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDA60A532317F43500B5FA3D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDA60A592317F43500B5FA3D /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EDA60A322317F41000B5FA3D = {
+			isa = PBXGroup;
+			children = (
+				EDA60A3D2317F41000B5FA3D /* GHWXcodeExtension */,
+				EDA60A5A2317F43500B5FA3D /* GHWExtension */,
+				EDA60A572317F43500B5FA3D /* Frameworks */,
+				EDA60A3C2317F41000B5FA3D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EDA60A3C2317F41000B5FA3D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EDA60A3B2317F41000B5FA3D /* GHWXcodeExtension.app */,
+				EDA60A562317F43500B5FA3D /* GHWExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EDA60A3D2317F41000B5FA3D /* GHWXcodeExtension */ = {
+			isa = PBXGroup;
+			children = (
+				EDA60A3E2317F41000B5FA3D /* AppDelegate.h */,
+				EDA60A3F2317F41000B5FA3D /* AppDelegate.m */,
+				EDA60A412317F41000B5FA3D /* ViewController.h */,
+				EDA60A422317F41000B5FA3D /* ViewController.m */,
+				EDA60A442317F41000B5FA3D /* Assets.xcassets */,
+				EDA60A462317F41000B5FA3D /* Main.storyboard */,
+				EDA60A492317F41000B5FA3D /* Info.plist */,
+				EDA60A4A2317F41000B5FA3D /* main.m */,
+				EDA60A4C2317F41000B5FA3D /* GHWXcodeExtension.entitlements */,
+			);
+			path = GHWXcodeExtension;
+			sourceTree = "<group>";
+		};
+		EDA60A572317F43500B5FA3D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EDA60A582317F43500B5FA3D /* Cocoa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EDA60A5A2317F43500B5FA3D /* GHWExtension */ = {
+			isa = PBXGroup;
+			children = (
+				EDA60A6A2317F4BF00B5FA3D /* ASConst.h */,
+				EDA60A6B2317F4BF00B5FA3D /* AutoLayout */,
+				EDA60A702317F4BF00B5FA3D /* Tools */,
+				EDA60A5B2317F43500B5FA3D /* SourceEditorExtension.h */,
+				EDA60A5C2317F43500B5FA3D /* SourceEditorExtension.m */,
+				EDA60A5E2317F43500B5FA3D /* SourceEditorCommand.h */,
+				EDA60A5F2317F43500B5FA3D /* SourceEditorCommand.m */,
+				EDA60A612317F43500B5FA3D /* Info.plist */,
+				EDA60A622317F43500B5FA3D /* GHWExtension.entitlements */,
+			);
+			path = GHWExtension;
+			sourceTree = "<group>";
+		};
+		EDA60A6B2317F4BF00B5FA3D /* AutoLayout */ = {
+			isa = PBXGroup;
+			children = (
+				EDA60A6C2317F4BF00B5FA3D /* ASAutoLayoutViewCode.m */,
+				EDA60A6D2317F4BF00B5FA3D /* ASAutoLayoutCommand.m */,
+				EDA60A6E2317F4BF00B5FA3D /* ASAutoLayoutViewCode.h */,
+				EDA60A6F2317F4BF00B5FA3D /* ASAutoLayoutCommand.h */,
+			);
+			path = AutoLayout;
+			sourceTree = "<group>";
+		};
+		EDA60A702317F4BF00B5FA3D /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				EDA60A712317F4BF00B5FA3D /* NSString+Extension.h */,
+				EDA60A722317F4BF00B5FA3D /* NSString+Extension.m */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EDA60A3A2317F41000B5FA3D /* GHWXcodeExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDA60A4F2317F41000B5FA3D /* Build configuration list for PBXNativeTarget "GHWXcodeExtension" */;
+			buildPhases = (
+				EDA60A372317F41000B5FA3D /* Sources */,
+				EDA60A382317F41000B5FA3D /* Frameworks */,
+				EDA60A392317F41000B5FA3D /* Resources */,
+				EDA60A692317F43500B5FA3D /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EDA60A642317F43500B5FA3D /* PBXTargetDependency */,
+			);
+			name = GHWXcodeExtension;
+			productName = GHWXcodeExtension;
+			productReference = EDA60A3B2317F41000B5FA3D /* GHWXcodeExtension.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EDA60A552317F43500B5FA3D /* GHWExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDA60A662317F43500B5FA3D /* Build configuration list for PBXNativeTarget "GHWExtension" */;
+			buildPhases = (
+				EDA60A522317F43500B5FA3D /* Sources */,
+				EDA60A532317F43500B5FA3D /* Frameworks */,
+				EDA60A542317F43500B5FA3D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GHWExtension;
+			productName = GHWExtension;
+			productReference = EDA60A562317F43500B5FA3D /* GHWExtension.appex */;
+			productType = "com.apple.product-type.xcode-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EDA60A332317F41000B5FA3D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = Jingyao;
+				TargetAttributes = {
+					EDA60A3A2317F41000B5FA3D = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					EDA60A552317F43500B5FA3D = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+				};
+			};
+			buildConfigurationList = EDA60A362317F41000B5FA3D /* Build configuration list for PBXProject "GHWXcodeExtension" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EDA60A322317F41000B5FA3D;
+			productRefGroup = EDA60A3C2317F41000B5FA3D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EDA60A3A2317F41000B5FA3D /* GHWXcodeExtension */,
+				EDA60A552317F43500B5FA3D /* GHWExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EDA60A392317F41000B5FA3D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDA60A452317F41000B5FA3D /* Assets.xcassets in Resources */,
+				EDA60A482317F41000B5FA3D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDA60A542317F43500B5FA3D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EDA60A372317F41000B5FA3D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDA60A432317F41000B5FA3D /* ViewController.m in Sources */,
+				EDA60A4B2317F41000B5FA3D /* main.m in Sources */,
+				EDA60A402317F41000B5FA3D /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDA60A522317F43500B5FA3D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDA60A752317F4BF00B5FA3D /* NSString+Extension.m in Sources */,
+				EDA60A5D2317F43500B5FA3D /* SourceEditorExtension.m in Sources */,
+				EDA60A732317F4BF00B5FA3D /* ASAutoLayoutViewCode.m in Sources */,
+				EDA60A742317F4BF00B5FA3D /* ASAutoLayoutCommand.m in Sources */,
+				EDA60A602317F43500B5FA3D /* SourceEditorCommand.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EDA60A642317F43500B5FA3D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EDA60A552317F43500B5FA3D /* GHWExtension */;
+			targetProxy = EDA60A632317F43500B5FA3D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EDA60A462317F41000B5FA3D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EDA60A472317F41000B5FA3D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EDA60A4D2317F41000B5FA3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		EDA60A4E2317F41000B5FA3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		EDA60A502317F41000B5FA3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = GHWXcodeExtension/GHWXcodeExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 2HMG43AYW9;
+				INFOPLIST_FILE = GHWXcodeExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.jingyao.GHWXcodeExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EDA60A512317F41000B5FA3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = GHWXcodeExtension/GHWXcodeExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 2HMG43AYW9;
+				INFOPLIST_FILE = GHWXcodeExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.jingyao.GHWXcodeExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		EDA60A672317F43500B5FA3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = GHWExtension/GHWExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 2HMG43AYW9;
+				INFOPLIST_FILE = GHWExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.jingyao.GHWXcodeExtension.GHWExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		EDA60A682317F43500B5FA3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = GHWExtension/GHWExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 2HMG43AYW9;
+				INFOPLIST_FILE = GHWExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.jingyao.GHWXcodeExtension.GHWExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EDA60A362317F41000B5FA3D /* Build configuration list for PBXProject "GHWXcodeExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDA60A4D2317F41000B5FA3D /* Debug */,
+				EDA60A4E2317F41000B5FA3D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDA60A4F2317F41000B5FA3D /* Build configuration list for PBXNativeTarget "GHWXcodeExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDA60A502317F41000B5FA3D /* Debug */,
+				EDA60A512317F41000B5FA3D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDA60A662317F43500B5FA3D /* Build configuration list for PBXNativeTarget "GHWExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDA60A672317F43500B5FA3D /* Debug */,
+				EDA60A682317F43500B5FA3D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EDA60A332317F41000B5FA3D /* Project object */;
+}
