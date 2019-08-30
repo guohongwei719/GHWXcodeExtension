@@ -33,7 +33,7 @@
     // 添加 extension 代码
     
     NSString *className = [invocation.buffer.lines fetchClassName];
-    if ([invocation.buffer.lines indexOfFirstItemContainStr:[NSString stringWithFormat:@"@interface  %@ ()", className]] == NSNotFound) {
+    if ([invocation.buffer.lines indexOfFirstItemContainStr:[NSString stringWithFormat:@"@interface %@ ()", className]] == NSNotFound) {
         NSInteger impIndex = [invocation.buffer.lines indexOfImplementation];
         NSString *extensionStr = [NSString stringWithFormat:kInitViewExtensionCode, className];
         NSArray *contentArray = [extensionStr componentsSeparatedByString:@"\n"];
