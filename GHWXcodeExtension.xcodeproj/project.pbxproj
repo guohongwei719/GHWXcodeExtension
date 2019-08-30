@@ -154,10 +154,10 @@
 		EDA60A6B2317F4BF00B5FA3D /* AutoLayout */ = {
 			isa = PBXGroup;
 			children = (
-				EDA60A6C2317F4BF00B5FA3D /* ASAutoLayoutViewCode.m */,
-				EDA60A6D2317F4BF00B5FA3D /* ASAutoLayoutCommand.m */,
 				EDA60A6E2317F4BF00B5FA3D /* ASAutoLayoutViewCode.h */,
+				EDA60A6C2317F4BF00B5FA3D /* ASAutoLayoutViewCode.m */,
 				EDA60A6F2317F4BF00B5FA3D /* ASAutoLayoutCommand.h */,
+				EDA60A6D2317F4BF00B5FA3D /* ASAutoLayoutCommand.m */,
 			);
 			path = AutoLayout;
 			sourceTree = "<group>";
