@@ -26,7 +26,5 @@
 	<string>Copyright © 2019 Jingyao. All rights reserved.</string>
 	<key>NSMainStoryboardFile</key>
 	<string>Main</string>
-	<key>NSPrincipalClass</key>
-	<string>NSApplication</string>
 </dict>
 </plist>
