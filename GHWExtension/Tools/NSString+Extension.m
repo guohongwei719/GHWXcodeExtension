@@ -35,7 +35,7 @@
 
 - (NSString *)deleteSpaceAndNewLine {
     NSString *str = [self stringByReplacingOccurrencesOfString:@" " withString:@""];
-    str = [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    str = [str stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     return str;
 }
 

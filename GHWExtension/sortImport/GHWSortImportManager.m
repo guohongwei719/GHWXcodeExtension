@@ -11,6 +11,8 @@
 
 @interface GHWSortImportManager ()
 
+@property (nonatomic, strong) NSString *classNameImportStr;
+
 @property (nonatomic, strong) NSMutableArray *controllerArray;
 @property (nonatomic, strong) NSMutableArray *viewsArray;
 @property (nonatomic, strong) NSMutableArray *thirdLibArray;
@@ -34,6 +36,15 @@
 
 - (void)processCodeWithInvocation:(XCSourceEditorCommandInvocation *)invocation {
     NSLog(@"sortImport");
+    self.classNameImportStr = nil;
+    [self.controllerArray removeAllObjects];
+    [self.viewsArray removeAllObjects];
+    [self.thirdLibArray removeAllObjects];
+    [self.modelArray removeAllObjects];
+    [self.categoryArray removeAllObjects];
+    [self.otherArray removeAllObjects];
+    [self.indexSet removeAllIndexes];
+    
     if ([invocation.buffer.selections count] == 0) {
         return;
     }
@@ -42,7 +53,7 @@
     NSInteger endIndex = selectRange.end.line;
     
     NSInteger importStartIndex = -1;
-    
+    NSString *classNameStr = [[invocation.buffer.lines fetchClassName] lowercaseString];
     for (NSInteger i = startIndex; i <= endIndex; i++) {
         NSString *contentStr = [[invocation.buffer.lines[i] deleteSpaceAndNewLine] lowercaseString];
         if (![contentStr hasPrefix:@"#import"]) {
@@ -54,7 +65,10 @@
         if (importStartIndex == -1) {
             importStartIndex = i;
         }
-        if ([contentStr hasSuffix:@"view.h\""]) {
+        
+        if ([contentStr containsString:[NSString stringWithFormat:@"%@.h", classNameStr]]) {
+            self.classNameImportStr = invocation.buffer.lines[i];
+        } else if ([contentStr hasSuffix:@"view.h\""]) {
             [self.viewsArray addObject:invocation.buffer.lines[i]];
         } else if ([contentStr hasSuffix:@"controller.h\""]) {
             [self.controllerArray addObject:invocation.buffer.lines[i]];
@@ -71,6 +85,8 @@
     [invocation.buffer.lines printList];
     [invocation.buffer.lines removeObjectsAtIndexes:self.indexSet];
     
+    [invocation.buffer.lines printList];
+    [invocation.buffer.lines removeObject:self.classNameImportStr];
 
     [invocation.buffer.lines removeObjectsInArray:self.controllerArray];
     [invocation.buffer.lines printList];
@@ -95,9 +111,29 @@
         importStartIndex = impIndex;
     }
     
+    if ([self.classNameImportStr length]) {
+        NSMutableArray *mArr = [NSMutableArray arrayWithObject:self.classNameImportStr];
+        [mArr addObject:@"\n"];
+        [invocation.buffer.lines insertItemsOfArray:mArr fromIndex:importStartIndex];
+        importStartIndex = importStartIndex + [mArr count];
+        [invocation.buffer.lines printList];
+    }
+    
     if ([self.controllerArray count]) {
         self.controllerArray = [self.controllerArray arrayWithNoSameItem];
         [self.controllerArray addObject:@"\n"];
+        
+        NSString *classNameStr = [invocation.buffer.lines fetchClassName];
+        NSInteger classNameIndex = -1;
+        for (NSInteger i = 0; i < [self.controllerArray count]; i++) {
+            NSString *tempStr = self.controllerArray[i];
+            if ([tempStr containsString:classNameStr]) {
+                classNameIndex = i;
+            }
+        }
+
+        [self.controllerArray exchangeObjectAtIndex:0 withObjectAtIndex:classNameIndex];
+        
         [invocation.buffer.lines insertItemsOfArray:self.controllerArray fromIndex:importStartIndex];
         importStartIndex = importStartIndex + [self.controllerArray count];
         [invocation.buffer.lines printList];
