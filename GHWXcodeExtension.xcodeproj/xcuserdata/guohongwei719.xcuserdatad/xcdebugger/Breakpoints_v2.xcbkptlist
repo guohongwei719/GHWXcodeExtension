@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GHWExtension/Tools/NSMutableArray+GHWExtension.m"
-            timestampString = "588847170.113843"
+            filePath = "GHWExtension/addLazyCode/GHWAddLazyCodeManager.m"
+            timestampString = "588851017.571745"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "-indexOfFirstItemContainStr:"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "-initWithFormaterArray:invocation:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,29 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GHWExtension/SourceEditorCommand.m"
-            timestampString = "588847170.113905"
+            filePath = "GHWExtension/addLazyCode/GHWAddLazyCodeManager.m"
+            timestampString = "588851017.571813"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "-performCommandWithInvocation:completionHandler:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GHWExtension/Tools/NSMutableArray+GHWExtension.m"
-            timestampString = "588847170.113959"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
-            landmarkName = "-indexOfFirstItemContainStr:"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "-initWithFormaterArray:invocation:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

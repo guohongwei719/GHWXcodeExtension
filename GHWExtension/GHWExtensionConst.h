@@ -10,7 +10,7 @@
 /*
  * 需要在如下标记下自动插入代码,可以根据业务需求自行更改标记内容。可以插入单个标记也可以插入多个标记同时自动生成代码
  *
- * kGetterFormater     设置属性的懒加载方法标记格式
+ * kGetterSetterFormater     设置属性的懒加载方法标记格式
  * kAddSubviewFormater 设置UI控件添加
  * kMasonryFormater    设置UI控件设置布局
  * kInitFormater       设置UI控件初始化方法
@@ -18,7 +18,7 @@
 #import "NSString+Extension.h"
 #import "NSMutableArray+GHWExtension.h"
 
-static NSString *const kGetterFormater = @"#pragma mark - Getter";
+static NSString *const kGetterSetterFormater = @"#pragma mark - Setter / Getter";
 static NSString *const kAddSubviewFormater = @"- (void)addSubviews" ;
 static NSString *const kMasonryFormater = @"- (void)addConstraints";
 static NSString *const kInitFormater = @"[self bindViewModel]";
@@ -42,7 +42,7 @@ static NSString * const kInitViewExtensionCode = @"@interface %@ ()\n\n@end\n";
 static NSString * const kInitViewLifeCycleCode = @"\n- (instancetype)initWithFrame:(CGRect)frame {\n    self = [super initWithFrame:frame];\n    if (self) {\n        [self configViews];\n    }\n    return self;\n}\n\n- (void)configViews {\n\n}\n\n#pragma mark - Public Methods\n\n#pragma mark - Private Methods\n\n#pragma mark - Setter / Getter";
 
 
-/*************************************************************************/
+/*******************************  addlazyCode  ******************************************/
 //自定义内容格式
 static NSString *const kASButtonFormater = @"- (%@ *)%@{\n    if (_%@ == nil) {\n        _%@ = [[%@ alloc] init];\n        [_%@ setTitle:<#(nullable NSString *)#> forState:UIControlStateNormal];\n        [_%@ setImage:[UIImage imageNamed:<#(nullable NSString *)#>] forState:UIControlStateNormal];\n        [_%@ setTitleColor:<#(nullable UIColor *)#> forState:UIControlStateNormal];\n        _%@.titleLabel.font =  <#UIFONT_IOS_DEFAULT_6#>;\n        _%@.layer.cornerRadius = <#EVO_PIX_5#>;\n        _%@.layer.masksToBounds = YES;\n    }\n    return _%@;\n}";
 
@@ -54,7 +54,7 @@ static NSString *const kASCommandFormater = @"-(RACCommand *)%@{  \n   if (!_%@)
 
 static NSString *const kASAddsubviewFormater = @"    [<#UIView#> addSubview:self.%@];";
 
-static NSString *const kASCommonFormater = @"- (%@ *)%@{\n    if (_%@ == nil) {\n        _%@ = [[%@ alloc] init];\n    }\n    return _%@;\n}";
+static NSString *const kASCommonFormater = @"\n- (%@ *)%@{\n    if (_%@ == nil) {\n        _%@ = [[%@ alloc] init];\n    }\n    return _%@;\n}";
 
 static NSString *const kLabelInitFormater = @"        self.%@.text = <#(nullable NSString *)#>;";
 
@@ -62,3 +62,4 @@ static NSString *const kUIButtonInitFormater = @"        [self.%@ setTitle:<#(nu
 
 static NSString *const kUIImageViewInitFormater = @"        [self.%@ sd_setImageWithURL:[NSURL URLWithString:<#(nullable NSString *)#>] placeholderImage:[UIImage imageNamed:<#(nullable NSString *)#>]];";
 
+static NSString * const kAddLazyCodeTableViewDataSourceAndDelegate = @"\n#pragma mark - tableView DataSource\n\n- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {\n    return 5;\n}\n\n- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {\n    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@\"UITableViewCell\"];\n    if (indexPath.row % 2 == 0) {\n        cell.contentView.backgroundColor = [UIColor blueColor];\n     } else {\n        cell.contentView.backgroundColor = [UIColor redColor];\n    }\n    return cell;\n}\n\n#pragma mark - tableView Delegate\n\n- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {\n    return 60;\n}\n\n-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {\n\n}";

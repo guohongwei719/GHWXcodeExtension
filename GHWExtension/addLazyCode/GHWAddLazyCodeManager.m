@@ -34,82 +34,80 @@
 }
 -(void)initWithFormaterArray:(XCSourceTextRange *)rang invocation:(XCSourceEditorCommandInvocation *)invocation {
     [self.lazyArray removeAllObjects];
-    [self.containtsArray removeAllObjects];
-    [self.propertyValueArray removeAllObjects];
-    [self.subviewsArray removeAllObjects];
+//    [self.containtsArray removeAllObjects];
+//    [self.propertyValueArray removeAllObjects];
+//    [self.subviewsArray removeAllObjects];
     
     NSInteger startLine = rang.start.line;
     NSInteger endLine = rang.end.line;
-    self.lineCount = invocation.buffer.lines.count;
+//    self.lineCount = invocation.buffer.lines.count;
     
     for (NSInteger i = startLine; i <= endLine; i++) {
-        NSString *string = invocation.buffer.lines[i];
+        NSString *contentStr = invocation.buffer.lines[i];
         
-        if ([string isEqualToString:@"\n"] || ![string containsString:@";"]) {
+        if ([contentStr isEqualToString:@"\n"] || ![contentStr containsString:@";"]) {
             continue;
         }
-        // 去掉空格
-        string = [string stringByReplacingOccurrencesOfString:@" " withString:@""];
         // 获取类名
-        NSString *classNameStr = nil;
+        NSString *classNameStr = [contentStr fetchClassNameStr];
         // 获取属性名或者变量名
-        NSString *propertyNameStr = [string stringBetweenLeftStr:@"*" andRightStr:@";"];
-        //判断NSMutableArray<NSString *> *testArray 这样的情况来处理
-        if ([string containsString:@"NSMutableArray<"]) {
-            classNameStr = [string stringBetweenLeftStr:@")" andRightStr:@"*>"];
-            classNameStr = [classNameStr stringByAppendingString:@"*>"];
-            propertyNameStr = [string stringBetweenLeftStr:@"*>*" andRightStr:@";"];
-        }else if ([string containsString:@")"]) {
-            classNameStr = [string stringBetweenLeftStr:@")" andRightStr:@"*"];
-        }else{
-            classNameStr = [string stringBetweenLeftStr:nil andRightStr:@"*"];
-        }
+        NSString *propertyNameStr = [contentStr fetchPropertyNameStr];
+        NSString *replaceStr = [NSString stringWithFormat:@"@property (nonatomic, strong) %@ *%@;\n", classNameStr, propertyNameStr];
+        invocation.buffer.lines[i] = replaceStr;
         //懒加载
         NSArray *lazyGetArray = [self getterForClassName:classNameStr andPropertyName:propertyNameStr];
         if (lazyGetArray.count>0) {
             [self.lazyArray addObject:lazyGetArray];
         }
-         //获取布局
-        NSArray *constraintsArr = [self addConstraintsForClassName:classNameStr PropertyName:propertyNameStr];
-        if (constraintsArr.count>0) {
-            [self.containtsArray addObject:constraintsArr];
+        
+        if ([classNameStr isEqualToString:@"UITableView"]) {
+            NSArray *formaterArr = [[kAddLazyCodeTableViewDataSourceAndDelegate componentsSeparatedByString:@"\n"] arrayByAddingObject:@""];
+            NSInteger insertIndex = [invocation.buffer.lines indexOfFirstItemContainStr:@"#pragma mark - Setter / Getter"];
+            [invocation.buffer.lines insertItemsOfArray:formaterArr fromIndex:insertIndex - 1];
         }
-        //获取添加subView
-        NSArray *viewsArr = [self addSubViewForClassName:classNameStr PropertyName:propertyNameStr];
-        if (viewsArr.count>0) {
-            [self.subviewsArray addObject:viewsArr];
-        }
-        //初始化所有属性
-        NSArray *propertyArr = [self propertyInitForClassName:classNameStr PropertyName:propertyNameStr];
-        if (propertyArr.count>0) {
-            [self.propertyValueArray addObject:propertyArr];
-        }
+        
+        
+        
+        
+//         //获取布局
+//        NSArray *constraintsArr = [self addConstraintsForClassName:classNameStr PropertyName:propertyNameStr];
+//        if (constraintsArr.count>0) {
+//            [self.containtsArray addObject:constraintsArr];
+//        }
+//        //获取添加subView
+//        NSArray *viewsArr = [self addSubViewForClassName:classNameStr PropertyName:propertyNameStr];
+//        if (viewsArr.count>0) {
+//            [self.subviewsArray addObject:viewsArr];
+//        }
+//        //初始化所有属性
+//        NSArray *propertyArr = [self propertyInitForClassName:classNameStr PropertyName:propertyNameStr];
+//        if (propertyArr.count>0) {
+//            [self.propertyValueArray addObject:propertyArr];
+//        }
     }
 }
 //进行判断进行替换
 -(void)addBufferInsertInvocation:(XCSourceEditorCommandInvocation *)invocation{
-    for (NSInteger i = 0; i < self.lineCount; i ++) {
-        NSString *lineStr = invocation.buffer.lines[i];
-        
-        if ([self checkCurrentString:lineStr isContainsString:kGetterFormater]) {
-            [self addCheckLineCoutWithCurrentIndex:i formaterArray:self.lazyArray];
-            [self addBufferWithCurrentLineIndex:i formaterArray:self.lazyArray invocation:invocation];
-            
-        }else if ([self checkCurrentString:lineStr isContainsString:kMasonryFormater]) {
-            [self addCheckLineCoutWithCurrentIndex:i formaterArray:self.containtsArray];
-            [self addBufferWithCurrentLineIndex:i formaterArray:self.containtsArray invocation:invocation];
-            
-        }else if ([self checkCurrentString:lineStr isContainsString:kAddSubviewFormater]){
-            [self addCheckLineCoutWithCurrentIndex:i formaterArray:self.subviewsArray];
-            [self addBufferWithCurrentLineIndex:i formaterArray:self.subviewsArray invocation:invocation];
-            
-        }else if ([self checkCurrentString:lineStr isContainsString:kInitFormater]){
-            [self addCheckLineCoutWithCurrentIndex:i formaterArray:self.propertyValueArray];
-            [self addBufferWithCurrentLineIndex:i formaterArray:self.propertyValueArray invocation:invocation];
-            
-        }
+//    for (NSInteger i = 0; i < self.lineCount; i ++) {
+//        NSString *lineStr = invocation.buffer.lines[i];
+//        if ([self checkCurrentString:lineStr isContainsString:kGetterSetterFormater]) {
+//            [self addCheckLineCoutWithCurrentIndex:i formaterArray:self.lazyArray];
+//            [self addBufferWithCurrentLineIndex:i formaterArray:self.lazyArray invocation:invocation];
+//        }
+//    }
+    
+    NSInteger settterIndex = [invocation.buffer.lines indexOfFirstItemContainStr:@"#pragma mark - Setter / Getter"];
+    if (settterIndex == NSNotFound) {
+        return;
+    }
+    settterIndex = settterIndex + 1;
+    for (int i = 0; i < [self.lazyArray count]; i++) {
+        NSArray *tempArray = [self.lazyArray objectAtIndex:i];
+        [invocation.buffer.lines insertItemsOfArray:tempArray fromIndex:settterIndex];
+        settterIndex = settterIndex + [tempArray count];
     }
 }
+
 -(void)addBufferWithCurrentLineIndex:(NSInteger)currentLineIndex formaterArray:(NSMutableArray *)formaterArray  invocation:(XCSourceEditorCommandInvocation *)invocation {
     //这里的循环主要就是开始 在检测到的下一行开始轮询
     for (NSInteger i = currentLineIndex + 1; i < formaterArray.count + currentLineIndex + 1; i ++) {
