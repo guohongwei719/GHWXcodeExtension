@@ -17,6 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *)fetchClassName;
 - (NSInteger)indexOfImplementation;
 - (void)deleteItemsFromFirstItemContains:(NSString *)firstStr andLastItemsContainsStr:(NSString *)lastStr;
+- (void)printList;
+- (NSMutableArray *)arrayWithNoSameItem;
+
 @end
 
 NS_ASSUME_NONNULL_END

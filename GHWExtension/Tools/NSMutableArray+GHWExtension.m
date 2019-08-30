@@ -71,4 +71,15 @@
     }
 }
 
+- (void)printList {
+    for (NSInteger i = 0; i < [self count]; i++) {
+        NSLog(@"%@", self[i]);
+    }
+}
+
+- (NSMutableArray *)arrayWithNoSameItem {
+    NSSet *set = [NSSet setWithArray:self];
+    return [NSMutableArray arrayWithArray:[set allObjects]];
+}
+
 @end
