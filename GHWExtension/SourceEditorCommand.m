@@ -7,7 +7,9 @@
 //
 
 #import "SourceEditorCommand.h"
-#import "ASAutoLayoutViewCode.h"
+#import "GHWInitViewManager.h"
+#import "GHWAddLazyCodeManager.h"
+#import "GHWSortImportManager.h"
 
 @implementation SourceEditorCommand
 
@@ -15,8 +17,12 @@
 {
     // Implement your command here, invoking the completion handler when done. Pass it nil on success, and an NSError on failure.
     NSString *identifier = invocation.commandIdentifier;
-    if ([identifier hasPrefix:@"com.jingyao.GHWXcodeExtension.GHWExtension"]) {
-        [[ASAutoLayoutViewCode sharedInstane] addAutoLayoutViewCodeWithInvocation:invocation];
+    if ([identifier hasPrefix:@"com.jingyao.GHWXcodeExtension.GHWExtension.sortImport"]) {
+        [[GHWSortImportManager sharedInstane] processCodeWithInvocation:invocation];
+    } else if ([identifier hasPrefix:@"com.jingyao.GHWXcodeExtension.GHWExtension.initView"]) {
+        [[GHWInitViewManager sharedInstane] processCodeWithInvocation:invocation];
+    } else if ([identifier hasPrefix:@"com.jingyao.GHWXcodeExtension.GHWExtension.addLazyCode"]) {
+        [[GHWAddLazyCodeManager sharedInstane] processCodeWithInvocation:invocation];
     }
     completionHandler(nil);
 }

@@ -6,11 +6,11 @@
 //  Copyright © 2018年 Sun Wen. All rights reserved.
 //
 
-#import "ASAutoLayoutViewCode.h"
+#import "GHWAddLazyCodeManager.h"
 #import "NSString+Extension.h"
-#import "ASConst.h"
+#import "GHWExtensionConst.h"
 
-@interface ASAutoLayoutViewCode()
+@interface GHWAddLazyCodeManager()
 
 @property(nonatomic,copy)NSMutableArray *lazyArray;
 
@@ -24,9 +24,9 @@
 
 @end
 
-@implementation ASAutoLayoutViewCode
+@implementation GHWAddLazyCodeManager
 
-- (void)addAutoLayoutViewCodeWithInvocation:(XCSourceEditorCommandInvocation *)invocation {
+- (void)processCodeWithInvocation:(XCSourceEditorCommandInvocation *)invocation {
     for (XCSourceTextRange *rang in invocation.buffer.selections) {
         [self initWithFormaterArray:rang invocation:invocation];
         [self addBufferInsertInvocation:invocation];
@@ -208,11 +208,11 @@
     }
     return _propertyValueArray;
 }
-+(ASAutoLayoutViewCode *)sharedInstane{
++(GHWAddLazyCodeManager *)sharedInstane{
     static dispatch_once_t predicate;
-    static ASAutoLayoutViewCode * sharedInstane;
+    static GHWAddLazyCodeManager * sharedInstane;
     dispatch_once(&predicate, ^{
-        sharedInstane = [[ASAutoLayoutViewCode alloc] init];
+        sharedInstane = [[GHWAddLazyCodeManager alloc] init];
     });
     return sharedInstane;
 }
