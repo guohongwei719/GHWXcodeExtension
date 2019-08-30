@@ -18,4 +18,6 @@
  */
 - (NSString *)stringBetweenLeftStr:(NSString *)leftStr andRightStr:(NSString *)rightStr;
 
+// 删除空格和换行符
+- (NSString *)deleteSpaceAndNewLine;
 @end

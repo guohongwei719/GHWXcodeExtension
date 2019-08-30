@@ -10,6 +10,7 @@
 		ED6552302318F98E0036A04A /* GHWAddLazyCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED65522C2318F98E0036A04A /* GHWAddLazyCodeManager.m */; };
 		ED6552372318FB180036A04A /* GHWInitViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6552362318FB180036A04A /* GHWInitViewManager.m */; };
 		ED65523A2318FBB70036A04A /* GHWSortImportManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6552392318FBB70036A04A /* GHWSortImportManager.m */; };
+		ED65524023190CE00036A04A /* NSMutableArray+GHWExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ED65523F23190CE00036A04A /* NSMutableArray+GHWExtension.m */; };
 		EDA60A402317F41000B5FA3D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA60A3F2317F41000B5FA3D /* AppDelegate.m */; };
 		EDA60A432317F41000B5FA3D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA60A422317F41000B5FA3D /* ViewController.m */; };
 		EDA60A452317F41000B5FA3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDA60A442317F41000B5FA3D /* Assets.xcassets */; };
@@ -54,6 +55,8 @@
 		ED6552362318FB180036A04A /* GHWInitViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GHWInitViewManager.m; sourceTree = "<group>"; };
 		ED6552382318FBB70036A04A /* GHWSortImportManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GHWSortImportManager.h; sourceTree = "<group>"; };
 		ED6552392318FBB70036A04A /* GHWSortImportManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GHWSortImportManager.m; sourceTree = "<group>"; };
+		ED65523E23190CE00036A04A /* NSMutableArray+GHWExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+GHWExtension.h"; sourceTree = "<group>"; };
+		ED65523F23190CE00036A04A /* NSMutableArray+GHWExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+GHWExtension.m"; sourceTree = "<group>"; };
 		EDA60A3B2317F41000B5FA3D /* GHWXcodeExtension.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GHWXcodeExtension.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDA60A3E2317F41000B5FA3D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EDA60A3F2317F41000B5FA3D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -188,6 +191,8 @@
 			children = (
 				EDA60A712317F4BF00B5FA3D /* NSString+Extension.h */,
 				EDA60A722317F4BF00B5FA3D /* NSString+Extension.m */,
+				ED65523E23190CE00036A04A /* NSMutableArray+GHWExtension.h */,
+				ED65523F23190CE00036A04A /* NSMutableArray+GHWExtension.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -307,6 +312,7 @@
 				ED6552372318FB180036A04A /* GHWInitViewManager.m in Sources */,
 				EDA60A602317F43500B5FA3D /* SourceEditorCommand.m in Sources */,
 				ED65523A2318FBB70036A04A /* GHWSortImportManager.m in Sources */,
+				ED65524023190CE00036A04A /* NSMutableArray+GHWExtension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

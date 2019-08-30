@@ -15,6 +15,9 @@
  * kMasonryFormater    设置UI控件设置布局
  * kInitFormater       设置UI控件初始化方法
 */
+#import "NSString+Extension.h"
+#import "NSMutableArray+GHWExtension.h"
+
 static NSString *const kGetterFormater = @"#pragma mark - Getter";
 static NSString *const kAddSubviewFormater = @"- (void)addSubviews" ;
 static NSString *const kMasonryFormater = @"- (void)addConstraints";
@@ -32,6 +35,12 @@ static NSString *const kLabel = @"Label";
 static NSString *const kUIImageView = @"UIImageView";
 static NSString *const kTextField = @"TextField";
 static NSString *const kTextView = @"TextView";
+
+
+/******************************* initView ******************************************/
+static NSString * const kInitViewExtensionCode = @"@interface %@ ()\n\n@end\n";
+static NSString * const kInitViewLifeCycleCode = @"\n- (instancetype)initWithFrame:(CGRect)frame {\n    self = [super initWithFrame:frame];\n    if (self) {\n        [self configViews];\n    }\n    return self;\n}\n\n- (void)configViews {\n\n}\n";
+
 
 /*************************************************************************/
 //自定义内容格式
