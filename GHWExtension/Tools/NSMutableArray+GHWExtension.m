@@ -37,7 +37,19 @@
     for (int i = 0; i < [self count]; i++) {
         NSString *tempStr = [self[i] deleteSpaceAndNewLine];
         if ([tempStr hasPrefix:@"@implementation"]) {
-            className = [tempStr substringFromIndex:[@"@implementation" length]];
+            if ([tempStr containsString:@"("]) {
+                className = [tempStr stringBetweenLeftStr:@"@implementation" andRightStr:@"("];
+            } else {
+                className = [tempStr substringFromIndex:[@"@implementation" length]];
+            }
+        } else if ([tempStr hasPrefix:@"@interface"]) {
+            if ([tempStr containsString:@":"]) {
+                className = [tempStr stringBetweenLeftStr:@"@interface" andRightStr:@":"];
+
+            } else if ([tempStr containsString:@"("]) {
+                className = [tempStr stringBetweenLeftStr:@"@interface" andRightStr:@"("];
+
+            }
         }
     }
     return className;
