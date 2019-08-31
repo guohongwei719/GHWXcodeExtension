@@ -12,99 +12,123 @@
 
 @interface GHWAddLazyCodeManager()
 
-@property(nonatomic,copy)NSMutableArray *lazyArray;
+@property(nonatomic, copy) NSMutableArray *lazyArray;
+@property(nonatomic, copy) NSMutableArray *delegateMethodsArray;
 
-@property(nonatomic,copy)NSMutableArray *containtsArray;
-
-@property(nonatomic,copy)NSMutableArray *subviewsArray;
-
-@property(nonatomic,copy)NSMutableArray *propertyValueArray;
 //字符流的行数
-@property(nonatomic,assign)NSUInteger lineCount;
+@property(nonatomic, assign) NSUInteger lineCount;
 
 @end
 
 @implementation GHWAddLazyCodeManager
 
++(GHWAddLazyCodeManager *)sharedInstane{
+    static dispatch_once_t predicate;
+    static GHWAddLazyCodeManager * sharedInstane;
+    dispatch_once(&predicate, ^{
+        sharedInstane = [[GHWAddLazyCodeManager alloc] init];
+    });
+    return sharedInstane;
+}
+
 - (void)processCodeWithInvocation:(XCSourceEditorCommandInvocation *)invocation {
     for (XCSourceTextRange *rang in invocation.buffer.selections) {
         [self initWithFormaterArray:rang invocation:invocation];
-        [self addBufferInsertInvocation:invocation];
     }
 }
--(void)initWithFormaterArray:(XCSourceTextRange *)rang invocation:(XCSourceEditorCommandInvocation *)invocation {
+-(void)initWithFormaterArray:(XCSourceTextRange *)selectedTextRange invocation:(XCSourceEditorCommandInvocation *)invocation {
     [self.lazyArray removeAllObjects];
-//    [self.containtsArray removeAllObjects];
-//    [self.propertyValueArray removeAllObjects];
-//    [self.subviewsArray removeAllObjects];
-    
-    NSInteger startLine = rang.start.line;
-    NSInteger endLine = rang.end.line;
-//    self.lineCount = invocation.buffer.lines.count;
+    [self.delegateMethodsArray removeAllObjects];
+    NSInteger startLine = selectedTextRange.start.line;
+    NSInteger endLine = selectedTextRange.end.line;
     
     for (NSInteger i = startLine; i <= endLine; i++) {
         NSString *contentStr = invocation.buffer.lines[i];
         
-        if ([contentStr isEqualToString:@"\n"] || ![contentStr containsString:@";"]) {
+        if ([[contentStr deleteSpaceAndNewLine] length] == 0) {
             continue;
         }
         // 获取类名
         NSString *classNameStr = [contentStr fetchClassNameStr];
         // 获取属性名或者变量名
         NSString *propertyNameStr = [contentStr fetchPropertyNameStr];
-        NSString *replaceStr = [NSString stringWithFormat:@"@property (nonatomic, strong) %@ *%@;\n", classNameStr, propertyNameStr];
-        invocation.buffer.lines[i] = replaceStr;
+        if (!classNameStr || !propertyNameStr) {
+            continue;
+        }
+        
+        // 修改对应属性行, 规范化
+        NSString *replaceStr = [NSString stringWithFormat:@"@property (nonatomic, strong) %@ *%@", classNameStr, propertyNameStr];
+        if (![contentStr containsString:@"*"]) {
+            replaceStr = [NSString stringWithFormat:@"@property (nonatomic, assign) %@ %@", classNameStr, propertyNameStr];
+        }
+        NSRange suffixRange = [contentStr rangeOfString:@";"];
+        if (suffixRange.location != NSNotFound) {
+            NSString *suffixStr = [contentStr substringFromIndex:suffixRange.location];
+            invocation.buffer.lines[i] = [NSString stringWithFormat:@"%@%@", replaceStr, suffixStr];
+
+        } else {
+            invocation.buffer.lines[i] = [NSString stringWithFormat:@"%@%@", replaceStr, @";"];
+        }
+        if (![invocation.buffer.lines[i] containsString:@"*"]) {
+            continue;
+        }
+        
+        
+        
         //懒加载
         NSArray *lazyGetArray = [self getterForClassName:classNameStr andPropertyName:propertyNameStr];
-        if (lazyGetArray.count>0) {
+        if (lazyGetArray.count > 0) {
             [self.lazyArray addObject:lazyGetArray];
         }
-        
-        if ([classNameStr isEqualToString:@"UITableView"]) {
-            NSArray *formaterArr = [[kAddLazyCodeTableViewDataSourceAndDelegate componentsSeparatedByString:@"\n"] arrayByAddingObject:@""];
-            NSInteger insertIndex = [invocation.buffer.lines indexOfFirstItemContainStr:@"#pragma mark - Setter / Getter"];
-            [invocation.buffer.lines insertItemsOfArray:formaterArr fromIndex:insertIndex - 1];
+
+        // 协议方法
+        NSArray *delegateMethodLinesArray = [self fetchMethodsLinesArrayWithClassName:classNameStr];
+        if ([delegateMethodLinesArray count]) {
+            [self.delegateMethodsArray addObject:delegateMethodLinesArray];
         }
-        
-        
-        
-        
-//         //获取布局
-//        NSArray *constraintsArr = [self addConstraintsForClassName:classNameStr PropertyName:propertyNameStr];
-//        if (constraintsArr.count>0) {
-//            [self.containtsArray addObject:constraintsArr];
-//        }
-//        //获取添加subView
-//        NSArray *viewsArr = [self addSubViewForClassName:classNameStr PropertyName:propertyNameStr];
-//        if (viewsArr.count>0) {
-//            [self.subviewsArray addObject:viewsArr];
-//        }
-//        //初始化所有属性
-//        NSArray *propertyArr = [self propertyInitForClassName:classNameStr PropertyName:propertyNameStr];
-//        if (propertyArr.count>0) {
-//            [self.propertyValueArray addObject:propertyArr];
-//        }
+    }
+    [self addAllDelegateMethodList:invocation andStartLine:startLine];
+    [self addBufferInsertInvocation:invocation andFromIndex:startLine];
+
+}
+
+- (NSArray *)fetchMethodsLinesArrayWithClassName:(NSString *)classNameStr {
+    if ([classNameStr isEqualToString:@"UITableView"]) {
+        NSArray *formaterArr = [[kAddLazyCodeTableViewDataSourceAndDelegate componentsSeparatedByString:@"\n"] arrayByAddingObject:@""];
+        return formaterArr;
+    } else {
+        return nil;
     }
 }
+
 //进行判断进行替换
--(void)addBufferInsertInvocation:(XCSourceEditorCommandInvocation *)invocation{
-//    for (NSInteger i = 0; i < self.lineCount; i ++) {
-//        NSString *lineStr = invocation.buffer.lines[i];
-//        if ([self checkCurrentString:lineStr isContainsString:kGetterSetterFormater]) {
-//            [self addCheckLineCoutWithCurrentIndex:i formaterArray:self.lazyArray];
-//            [self addBufferWithCurrentLineIndex:i formaterArray:self.lazyArray invocation:invocation];
-//        }
-//    }
-    
-    NSInteger settterIndex = [invocation.buffer.lines indexOfFirstItemContainStr:@"#pragma mark - Setter / Getter"];
+-(void)addBufferInsertInvocation:(XCSourceEditorCommandInvocation *)invocation andFromIndex:(NSInteger)startIndex {
+    NSInteger settterIndex = [invocation.buffer.lines indexOfFirstItemContainStr:@"#pragma mark - Setter / Getter" fromIndex:startIndex];
     if (settterIndex == NSNotFound) {
-        return;
+        NSInteger impIndex = [invocation.buffer.lines indexOfFirstItemContainStr:@"@implementation" fromIndex:startIndex];
+        settterIndex = [invocation.buffer.lines indexOfFirstItemContainStr:@"@end" fromIndex:impIndex];
+    } else {
+        settterIndex = settterIndex + 1;
     }
-    settterIndex = settterIndex + 1;
     for (int i = 0; i < [self.lazyArray count]; i++) {
         NSArray *tempArray = [self.lazyArray objectAtIndex:i];
         [invocation.buffer.lines insertItemsOfArray:tempArray fromIndex:settterIndex];
         settterIndex = settterIndex + [tempArray count];
+    }
+}
+
+- (void)addAllDelegateMethodList:(XCSourceEditorCommandInvocation *)invocation andStartLine:(NSInteger)startLine {
+    NSInteger insertIndex = [invocation.buffer.lines indexOfFirstItemContainStr:@"#pragma mark - Setter / Getter" fromIndex:startLine];
+    if (insertIndex == NSNotFound) {
+        NSInteger impIndex = [invocation.buffer.lines indexOfFirstItemContainStr:@"@implementation" fromIndex:startLine];
+        insertIndex = [invocation.buffer.lines indexOfFirstItemContainStr:@"@end" fromIndex:impIndex];
+    } else {
+        insertIndex = insertIndex - 1;
+    }
+    for (int i = 0; i < [self.delegateMethodsArray count]; i++) {
+        NSArray *tempArray = [self.delegateMethodsArray objectAtIndex:i];
+        [invocation.buffer.lines insertItemsOfArray:tempArray fromIndex:insertIndex];
+        insertIndex = insertIndex + [tempArray count];
     }
 }
 
@@ -182,36 +206,19 @@
     return conArray;
 }
 #pragma mark - Get
+
 -(NSMutableArray *)lazyArray{
-    if (_lazyArray == nil) {
+    if (!_lazyArray) {
         _lazyArray = [[NSMutableArray alloc] init];
     }
     return _lazyArray;
 }
--(NSMutableArray *)containtsArray{
-    if (_containtsArray == nil) {
-        _containtsArray = [[NSMutableArray alloc] init];
+
+-(NSMutableArray *)delegateMethodsArray{
+    if (!_delegateMethodsArray) {
+        _delegateMethodsArray = [[NSMutableArray alloc] init];
     }
-    return _containtsArray;
+    return _delegateMethodsArray;
 }
--(NSMutableArray *)subviewsArray{
-    if (_subviewsArray == nil) {
-        _subviewsArray = [[NSMutableArray alloc] init];
-    }
-    return _subviewsArray;
-}
-- (NSMutableArray *)propertyValueArray{
-    if (_propertyValueArray == nil) {
-        _propertyValueArray = [[NSMutableArray alloc] init];
-    }
-    return _propertyValueArray;
-}
-+(GHWAddLazyCodeManager *)sharedInstane{
-    static dispatch_once_t predicate;
-    static GHWAddLazyCodeManager * sharedInstane;
-    dispatch_once(&predicate, ^{
-        sharedInstane = [[GHWAddLazyCodeManager alloc] init];
-    });
-    return sharedInstane;
-}
+
 @end

@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSMutableArray (GHWExtension)
 
 - (NSInteger)indexOfFirstItemContainStr:(NSString *)str;
+- (NSInteger)indexOfFirstItemContainStr:(NSString *)str fromIndex:(NSInteger)fromIndex;
 - (void)insertItemsOfArray:(NSArray *)itemsArray fromIndex:(NSInteger)insertIndex;
 - (NSString *)fetchClassName;
 - (NSInteger)indexOfImplementation;

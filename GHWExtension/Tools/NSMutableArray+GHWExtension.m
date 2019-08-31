@@ -24,6 +24,19 @@
     return index;
 }
 
+- (NSInteger)indexOfFirstItemContainStr:(NSString *)str fromIndex:(NSInteger)fromIndex {
+    str = [str deleteSpaceAndNewLine];
+    NSInteger index = NSNotFound;
+    for (NSInteger i = fromIndex; i < self.count; i++) {
+        NSString *contentStr = [[self objectAtIndex:i] deleteSpaceAndNewLine];
+        NSRange range = [contentStr rangeOfString:str];
+        if (range.location != NSNotFound) {
+            index = i;
+        }
+    }
+    return index;
+}
+
 - (void)insertItemsOfArray:(NSArray *)itemsArray fromIndex:(NSInteger)insertIndex {
     for (int i = 0; i < [itemsArray count]; i++) {
         NSString *str = itemsArray[i];

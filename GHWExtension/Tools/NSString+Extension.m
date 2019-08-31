@@ -42,22 +42,48 @@
 - (NSString *)fetchClassNameStr {
     NSString *tempStr = [self deleteSpaceAndNewLine];
     NSString *classNameStr = nil;
-    //判断NSMutableArray<NSString *> *testArray 这样的情况来处理
-    if ([tempStr containsString:@"NSMutableArray<"]) {
-        classNameStr = [tempStr stringBetweenLeftStr:@")" andRightStr:@"*>"];
-        classNameStr = [classNameStr stringByAppendingString:@"*>"];
-    }else if ([tempStr containsString:@")"]) {
-        classNameStr = [tempStr stringBetweenLeftStr:@")" andRightStr:@"*"];
-    }else{
-        classNameStr = [tempStr stringBetweenLeftStr:nil andRightStr:@"*"];
+    if ([tempStr containsString:@"*"]) {
+        //判断NSMutableArray<NSString *> *testArray 这样的情况来处理
+        if ([tempStr containsString:@"NSMutableArray<"]) {
+            classNameStr = [tempStr stringBetweenLeftStr:@")" andRightStr:@"*>"];
+            classNameStr = [classNameStr stringByAppendingString:@"*>"];
+        } else if ([tempStr containsString:@")"]) {
+            classNameStr = [tempStr stringBetweenLeftStr:@")" andRightStr:@"*"];
+        } else {
+            classNameStr = [tempStr stringBetweenLeftStr:nil andRightStr:@"*"];
+        }
+        return [classNameStr deleteSpaceAndNewLine];
+    } else {
+        NSString *tempStr0 = [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        NSArray *itemArray = [tempStr0 componentsSeparatedByString:@" "];
+        if (![tempStr0 hasPrefix:@"@property"] && [itemArray count] == 2) {
+            classNameStr = [itemArray[0] deleteSpaceAndNewLine];
+            return classNameStr;
+        }
     }
-    return [classNameStr deleteSpaceAndNewLine];
+    return classNameStr;
 }
 
 - (NSString *)fetchPropertyNameStr {
-    NSString *tempStr = [self deleteSpaceAndNewLine];
-    NSString *propertyNameStr = [tempStr stringBetweenLeftStr:@"*" andRightStr:@";"];
-    return [propertyNameStr deleteSpaceAndNewLine];
+    NSString *propertyNameStr = nil;
+
+    if ([self containsString:@"*"]) {
+        NSString *tempStr = [self deleteSpaceAndNewLine];
+        NSString *propertyNameStr = [tempStr stringBetweenLeftStr:@"*" andRightStr:@";"];
+        return [propertyNameStr deleteSpaceAndNewLine];
+    } else {
+        NSString *tempStr0 = [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        NSArray *itemArray = [tempStr0 componentsSeparatedByString:@" "];
+        if (![tempStr0 hasPrefix:@"@property"] && [itemArray count] == 2) {
+            propertyNameStr = [itemArray[1] deleteSpaceAndNewLine];
+            NSRange tempRange = [propertyNameStr rangeOfString:@";"];
+            if (tempRange.location != NSNotFound) {
+                propertyNameStr = [propertyNameStr substringToIndex:tempRange.location];
+            }
+            return propertyNameStr;
+        }
+    }
+    return propertyNameStr;
 }
 
 @end
