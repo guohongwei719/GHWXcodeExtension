@@ -147,6 +147,8 @@
         return @"UITableViewDelegate, UITableViewDataSource";
     } else if ([classNameStr isEqualToString:@"UICollectionView"]) {
         return @"UICollectionViewDelegate, UICollectionViewDataSource";
+    } else if ([classNameStr isEqualToString:@"UIScrollView"]) {
+        return @"UIScrollViewDelegate";
     }
     return @"";
 }
@@ -155,9 +157,11 @@
     if ([classNameStr isEqualToString:@"UITableView"]) {
         NSArray *formaterArr = [[kAddLazyCodeTableViewDataSourceAndDelegate componentsSeparatedByString:@"\n"] arrayByAddingObject:@""];
         return formaterArr;
-    } else {
-        return nil;
+    } else if ([classNameStr isEqualToString:@"UIScrollView"]) {
+        NSArray *formaterArr = [[kAddLazyCodeUIScrollViewDelegate componentsSeparatedByString:@"\n"] arrayByAddingObject:@""];
+        return formaterArr;
     }
+    return nil;
 }
 
 //进行判断进行替换
@@ -215,16 +219,17 @@
 //懒加载
 - (NSArray *)getterForClassName:(NSString *)className andPropertyName:(NSString *)propertyName{
     NSString *str = @"";
-    if ([className containsString:kUIButton]){
-        str = [NSString stringWithFormat:kASButtonFormater,className,propertyName,propertyName,propertyName,className,
-               propertyName,propertyName,propertyName,propertyName,propertyName,propertyName,propertyName];
-    }else if ([className containsString:kUILabel]){
+    if ([className containsString:kUIButton]) {
+        str = [NSString stringWithFormat:kLazyButtonCode, className, propertyName, propertyName, propertyName, className, propertyName, propertyName, propertyName, propertyName, propertyName];
+    } else if ([className containsString:kUILabel]) {
         str = [NSString stringWithFormat:kLazyLabelCode, className, propertyName, propertyName, propertyName, className, propertyName, propertyName, propertyName, propertyName, propertyName];
-    }else if ([className containsString:@"UIImageView"]){
+    } else if ([className containsString:@"UIScrollView"]) {
+        str = [NSString stringWithFormat:kLazyScrollViewCode, className, propertyName, propertyName, propertyName, className, propertyName, propertyName, propertyName, propertyName];
+    } else if ([className containsString:@"UITableView"]) {
+        str = [NSString stringWithFormat:kLazyUITableViewCode, className, propertyName, propertyName, propertyName, className, propertyName, propertyName, propertyName, propertyName, propertyName, propertyName, propertyName, propertyName, propertyName, propertyName];
+    } else if ([className containsString:@"UIImageView"]) {
         str = [NSString stringWithFormat:kLazyImageViewCode, className, propertyName, propertyName, propertyName, className, propertyName, propertyName, propertyName];
-    }else if ([className containsString:kCommand]){
-        str = [NSString stringWithFormat:kASCommandFormater,propertyName,propertyName,propertyName,propertyName];
-    }else{
+    } else {
         str = [NSString stringWithFormat:kASCommonFormater,className,propertyName,propertyName,propertyName,className,propertyName];
     }
     NSArray *formaterArr = [[str componentsSeparatedByString:@"\n"] arrayByAddingObject:@""];
