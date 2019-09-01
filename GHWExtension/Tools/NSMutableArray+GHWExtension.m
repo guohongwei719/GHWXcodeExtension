@@ -71,16 +71,6 @@
     return className;
 }
 
-- (NSInteger)indexOfImplementation {
-    NSInteger impIndex = -1;
-    for (int i = 0; i < [self count]; i++) {
-        NSString *tempStr = [self[i] deleteSpaceAndNewLine];
-        if ([tempStr hasPrefix:kImplementation]) {
-            impIndex = i;
-        }
-    }
-    return impIndex;
-}
 
 - (void)deleteItemsFromFirstItemContains:(NSString *)firstStr andLastItemsContainsStr:(NSString *)lastStr {
     NSInteger deleteFirstLine = 0;

@@ -12,8 +12,8 @@
 
 @interface GHWAddLazyCodeManager()
 
-@property(nonatomic, copy) NSMutableArray *lazyArray;
-@property(nonatomic, copy) NSMutableArray *delegateMethodsArray;
+@property (nonatomic, copy) NSMutableArray *lazyArray;
+@property (nonatomic, copy) NSMutableArray *delegateMethodsArray;
 
 //字符流的行数
 @property(nonatomic, assign) NSUInteger lineCount;
@@ -172,7 +172,7 @@
     NSInteger settterIndex = [invocation.buffer.lines indexOfFirstItemContainStr:@"#pragma mark - Setter / Getter" fromIndex:startIndex];
     if (settterIndex == NSNotFound) {
         NSInteger impIndex = [invocation.buffer.lines indexOfFirstItemContainStr:kImplementation fromIndex:startIndex];
-        settterIndex = [invocation.buffer.lines indexOfFirstItemContainStr:@"@end" fromIndex:impIndex];
+        settterIndex = [invocation.buffer.lines indexOfFirstItemContainStr:kEnd fromIndex:impIndex];
     } else {
         settterIndex = settterIndex + 1;
     }
@@ -187,7 +187,7 @@
     NSInteger insertIndex = [invocation.buffer.lines indexOfFirstItemContainStr:@"#pragma mark - Setter / Getter" fromIndex:startLine];
     if (insertIndex == NSNotFound) {
         NSInteger impIndex = [invocation.buffer.lines indexOfFirstItemContainStr:kImplementation fromIndex:startLine];
-        insertIndex = [invocation.buffer.lines indexOfFirstItemContainStr:@"@end" fromIndex:impIndex];
+        insertIndex = [invocation.buffer.lines indexOfFirstItemContainStr:kEnd fromIndex:impIndex];
     } else {
         insertIndex = insertIndex - 1;
     }

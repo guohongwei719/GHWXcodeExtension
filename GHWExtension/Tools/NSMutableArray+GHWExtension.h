@@ -16,7 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSInteger)indexOfFirstItemContainStr:(NSString *)str fromIndex:(NSInteger)fromIndex;
 - (void)insertItemsOfArray:(NSArray *)itemsArray fromIndex:(NSInteger)insertIndex;
 - (NSString *)fetchClassName;
-- (NSInteger)indexOfImplementation;
 - (void)deleteItemsFromFirstItemContains:(NSString *)firstStr andLastItemsContainsStr:(NSString *)lastStr;
 - (void)printList;
 - (NSMutableArray *)arrayWithNoSameItem;

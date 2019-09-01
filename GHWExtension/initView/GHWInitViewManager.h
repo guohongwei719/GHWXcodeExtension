@@ -15,8 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)processCodeWithInvocation:(XCSourceEditorCommandInvocation *)invocation;
 
-
-
 @end
 
 NS_ASSUME_NONNULL_END
