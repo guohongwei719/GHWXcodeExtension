@@ -157,6 +157,9 @@
     if ([classNameStr isEqualToString:@"UITableView"]) {
         NSArray *formaterArr = [[kAddLazyCodeTableViewDataSourceAndDelegate componentsSeparatedByString:@"\n"] arrayByAddingObject:@""];
         return formaterArr;
+    } else if ([classNameStr isEqualToString:@"UICollectionView"]) {
+        NSArray *formaterArr = [[kAddLazyCodeUICollectionViewDelegate componentsSeparatedByString:@"\n"] arrayByAddingObject:@""];
+        return formaterArr;
     } else if ([classNameStr isEqualToString:@"UIScrollView"]) {
         NSArray *formaterArr = [[kAddLazyCodeUIScrollViewDelegate componentsSeparatedByString:@"\n"] arrayByAddingObject:@""];
         return formaterArr;
@@ -227,7 +230,9 @@
         str = [NSString stringWithFormat:kLazyScrollViewCode, className, propertyName, propertyName, propertyName, className, propertyName, propertyName, propertyName, propertyName];
     } else if ([className containsString:@"UITableView"]) {
         str = [NSString stringWithFormat:kLazyUITableViewCode, className, propertyName, propertyName, propertyName, className, propertyName, propertyName, propertyName, propertyName, propertyName, propertyName, propertyName, propertyName, propertyName, propertyName];
-    } else if ([className containsString:@"UIImageView"]) {
+    } else if ([className containsString:@"UICollectionView"]) {
+        str = [NSString stringWithFormat:kLazyUICollectionViewCode, className, propertyName, propertyName, propertyName, className, propertyName, propertyName, propertyName, propertyName];
+    }  else if ([className containsString:@"UIImageView"]) {
         str = [NSString stringWithFormat:kLazyImageViewCode, className, propertyName, propertyName, propertyName, className, propertyName, propertyName, propertyName];
     } else {
         str = [NSString stringWithFormat:kASCommonFormater,className,propertyName,propertyName,propertyName,className,propertyName];
