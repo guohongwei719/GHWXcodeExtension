@@ -160,8 +160,9 @@
         str = [NSString stringWithFormat:kASButtonFormater,className,propertyName,propertyName,propertyName,className,
                propertyName,propertyName,propertyName,propertyName,propertyName,propertyName,propertyName];
     }else if ([className containsString:kUILabel]){
-        str = [NSString stringWithFormat:kASUILabelFormater,className,propertyName,propertyName,propertyName,className,
-               propertyName,propertyName,propertyName,propertyName,propertyName];
+        str = [NSString stringWithFormat:kLazyLabelCode, className, propertyName, propertyName, propertyName, className, propertyName, propertyName, propertyName, propertyName, propertyName];
+    }else if ([className containsString:@"UIImageView"]){
+        str = [NSString stringWithFormat:kLazyImageViewCode, className, propertyName, propertyName, propertyName, className, propertyName, propertyName, propertyName];
     }else if ([className containsString:kCommand]){
         str = [NSString stringWithFormat:kASCommandFormater,propertyName,propertyName,propertyName,propertyName];
     }else{
