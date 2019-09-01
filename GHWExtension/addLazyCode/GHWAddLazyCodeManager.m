@@ -78,7 +78,12 @@
         //懒加载
         NSArray *lazyGetArray = [self getterForClassName:classNameStr andPropertyName:propertyNameStr];
         if (lazyGetArray.count > 1) {
-            NSString *firstStr = lazyGetArray[1];
+            __block NSString *firstStr = lazyGetArray[1];
+            [lazyGetArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if ([[(NSString *)obj deleteSpaceAndNewLine] hasPrefix:@"-"]) {
+                    firstStr = (NSString *)obj;
+                }
+            }];
             NSInteger firstStrIndex = [invocation.buffer.lines indexOfFirstItemContainStr:firstStr];
             if (firstStrIndex == NSNotFound) {
                 [self.lazyArray addObject:lazyGetArray];

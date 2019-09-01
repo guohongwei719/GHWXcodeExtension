@@ -19,6 +19,7 @@
         NSRange range = [contentStr rangeOfString:str];
         if (range.location != NSNotFound) {
             index = i;
+            break;
         }
     }
     return index;
@@ -32,6 +33,7 @@
         NSRange range = [contentStr rangeOfString:str];
         if (range.location != NSNotFound) {
             index = i;
+            break;
         }
     }
     return index;
