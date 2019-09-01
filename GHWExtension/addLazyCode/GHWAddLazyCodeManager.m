@@ -89,7 +89,8 @@
             NSInteger impIndex = [invocation.buffer.lines indexOfFirstItemContainStrsArray:@[kImplementation, currentClassName]];
             NSInteger endIndex = [invocation.buffer.lines indexOfFirstItemContainStr:kEnd fromIndex:impIndex];
             NSInteger existIndex = [invocation.buffer.lines indexOfFirstItemContainStr:firstStr fromIndex:impIndex andToIndex:endIndex];
-            if (existIndex == NSNotFound) {
+            BOOL alreadyExistLazyMethod = [self alreadyExistsLazyMethodWithClassName:classNameStr andPropertyName:propertyNameStr andInvocation:invocation andStartLine:startLine];
+            if (existIndex == NSNotFound && alreadyExistLazyMethod == NO) {
                 [self.lazyArray addObject:lazyGetArray];
                 // 协议方法
                 NSArray *delegateMethodLinesArray = [self fetchMethodsLinesArrayWithClassName:classNameStr];
@@ -106,6 +107,26 @@
     [self addAllDelegateMethodList:invocation andStartLine:startLine];
     [self addBufferInsertInvocation:invocation andFromIndex:startLine];
 
+}
+
+- (BOOL)alreadyExistsLazyMethodWithClassName:(NSString *)className
+                             andPropertyName:(NSString *)propertyName
+                               andInvocation:(XCSourceEditorCommandInvocation *)invocation
+                                andStartLine:(NSInteger)startLine{
+    NSString *lazyHeadStr = [NSString stringWithFormat:@"-(%@*)%@", className, propertyName];
+    NSString *lazyHeadStr1 = [NSString stringWithFormat:@"-(%@*)%@{", className, propertyName];
+
+    NSString *currentClassName = [invocation.buffer.lines fetchCurrentClassNameWithCurrentIndex:startLine];
+    NSInteger impIndex = [invocation.buffer.lines indexOfFirstItemContainStrsArray:@[kImplementation, currentClassName]];
+    NSInteger endIndex = [invocation.buffer.lines indexOfFirstItemContainStr:kEnd fromIndex:impIndex];
+    BOOL existLazyMethod = NO;
+    for (NSInteger i = impIndex; i < endIndex; i++) {
+        NSString *contentStr = [invocation.buffer.lines[i] deleteSpaceAndNewLine];
+        if ([contentStr isEqualToString:lazyHeadStr] || [contentStr isEqualToString:lazyHeadStr1]) {
+            existLazyMethod = YES;
+        }
+    }
+    return existLazyMethod;
 }
 
 - (void)addDelegateDeclareWithClassName:(NSString *)className
