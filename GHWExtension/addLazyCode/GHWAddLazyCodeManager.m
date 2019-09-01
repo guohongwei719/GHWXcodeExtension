@@ -112,10 +112,7 @@
     }
     for (NSInteger i = startIndex; i > 0; i--) {
         NSString *contentStr = invocation.buffer.lines[i];
-        if ([contentStr containsString:kInterface] &&
-            [contentStr containsString:@"("] &&
-            [contentStr containsString:@")"]) {
-            
+        if ([contentStr containsString:kInterface]) {
             NSString *tempStr = [self fetchDelegateDeclareStrWithClassName:className];
             NSString *tempStr0 = @"";
             if ([tempStr containsString:@","]) {
@@ -168,26 +165,35 @@
 }
 
 //进行判断进行替换
--(void)addBufferInsertInvocation:(XCSourceEditorCommandInvocation *)invocation andFromIndex:(NSInteger)startIndex {
-    NSInteger settterIndex = [invocation.buffer.lines indexOfFirstItemContainStr:@"#pragma mark - Setter / Getter" fromIndex:startIndex];
-    if (settterIndex == NSNotFound) {
-        NSInteger impIndex = [invocation.buffer.lines indexOfFirstItemContainStr:kImplementation fromIndex:startIndex];
-        settterIndex = [invocation.buffer.lines indexOfFirstItemContainStr:kEnd fromIndex:impIndex];
+-(void)addBufferInsertInvocation:(XCSourceEditorCommandInvocation *)invocation andFromIndex:(NSInteger)startLine {
+    NSString *currentClassName = [invocation.buffer.lines fetchCurrentClassNameWithCurrentIndex:startLine];
+    NSInteger impIndex = [invocation.buffer.lines indexOfFirstItemContainStrsArray:@[kImplementation, currentClassName]];
+    NSInteger endIndex = [invocation.buffer.lines indexOfFirstItemContainStr:kEnd fromIndex:impIndex];
+    NSInteger insertIndex = [invocation.buffer.lines indexOfFirstItemContainStr:@"#pragma mark - Setter / Getter" fromIndex:impIndex andToIndex:endIndex];
+    if (insertIndex == NSNotFound) {
+        insertIndex = endIndex;
     } else {
-        settterIndex = settterIndex + 1;
+        insertIndex = insertIndex + 1;
     }
     for (int i = 0; i < [self.lazyArray count]; i++) {
         NSArray *tempArray = [self.lazyArray objectAtIndex:i];
-        [invocation.buffer.lines insertItemsOfArray:tempArray fromIndex:settterIndex];
-        settterIndex = settterIndex + [tempArray count];
+        [invocation.buffer.lines insertItemsOfArray:tempArray fromIndex:insertIndex];
+        insertIndex = insertIndex + [tempArray count];
     }
 }
 
 - (void)addAllDelegateMethodList:(XCSourceEditorCommandInvocation *)invocation andStartLine:(NSInteger)startLine {
-    NSInteger insertIndex = [invocation.buffer.lines indexOfFirstItemContainStr:@"#pragma mark - Setter / Getter" fromIndex:startLine];
+    
+    NSString *currentClassName = [invocation.buffer.lines fetchCurrentClassNameWithCurrentIndex:startLine];
+    
+    
+    
+//    NSInteger impIndex = [invocation.buffer.lines indexOfFirstItemContainStr:kImplementation fromIndex:startLine];
+    NSInteger impIndex = [invocation.buffer.lines indexOfFirstItemContainStrsArray:@[kImplementation, currentClassName]];
+    NSInteger endIndex = [invocation.buffer.lines indexOfFirstItemContainStr:kEnd fromIndex:impIndex];
+    NSInteger insertIndex = [invocation.buffer.lines indexOfFirstItemContainStr:@"#pragma mark - Setter / Getter" fromIndex:impIndex andToIndex:endIndex];
     if (insertIndex == NSNotFound) {
-        NSInteger impIndex = [invocation.buffer.lines indexOfFirstItemContainStr:kImplementation fromIndex:startLine];
-        insertIndex = [invocation.buffer.lines indexOfFirstItemContainStr:kEnd fromIndex:impIndex];
+        insertIndex = endIndex;
     } else {
         insertIndex = insertIndex - 1;
     }
