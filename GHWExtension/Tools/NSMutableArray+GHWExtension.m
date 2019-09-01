@@ -49,6 +49,7 @@
 }
 
 - (NSString *)fetchClassName {
+    NSString *referenceClassName = [self fetchReferenceClassName];
     NSString *className = @"";
     for (int i = 0; i < [self count]; i++) {
         NSString *tempStr = [self[i] deleteSpaceAndNewLine];
@@ -67,10 +68,27 @@
 
             }
         }
+        if (referenceClassName && [referenceClassName isEqualToString:className]) {
+            return referenceClassName;
+        }
     }
     return className;
 }
 
+- (NSString *)fetchReferenceClassName {
+    NSString *className = nil;
+    NSRange range;
+    NSString *str0 = [self[1] deleteSpaceAndNewLine];
+    if ([str0 hasPrefix:@"//"] && [str0 hasSuffix:@".m"]) {
+        if ([str0 containsString:@"+"]) {
+            range = [str0 rangeOfString:@"+"];
+        } else {
+            range = [str0 rangeOfString:@"."];
+        }
+        className = [str0 substringWithRange:NSMakeRange(2, range.location - 2)];
+    }
+    return className;
+}
 
 - (void)deleteItemsFromFirstItemContains:(NSString *)firstStr andLastItemsContainsStr:(NSString *)lastStr {
     NSInteger deleteFirstLine = 0;

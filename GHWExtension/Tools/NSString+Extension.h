@@ -26,4 +26,6 @@
 
 // 获取属性名
 - (NSString *)fetchPropertyNameStr;
+
+- (BOOL)checkHasContainsOneOfStrs:(NSArray *)strArray andNotContainsOneOfStrs:(NSArray *)noHasStrsArray;
 @end

@@ -70,7 +70,7 @@
         
     }
     
-    NSInteger importStartIndex = startIndex < [self indexOfFirstInsertLineOfArray:invocation.buffer.lines] ? [self indexOfFirstInsertLineOfArray:invocation.buffer.lines] : startIndex;
+    NSInteger importStartIndex = startIndex < [self indexOfFirstInsertLineOfArray:invocation.buffer.lines] + 1 ? [self indexOfFirstInsertLineOfArray:invocation.buffer.lines] + 1 : startIndex;
     NSString *classNameStr = [[invocation.buffer.lines fetchClassName] lowercaseString];
     for (NSInteger i = startIndex; i <= endIndex; i++) {
         NSString *contentStr = [[invocation.buffer.lines[i] deleteSpaceAndNewLine] lowercaseString];
@@ -81,21 +81,23 @@
             continue;
         }
         
-        if ([contentStr containsString:[NSString stringWithFormat:@"%@.h", classNameStr]]) {
+        if ([contentStr checkHasContainsOneOfStrs:@[[NSString stringWithFormat:@"%@.h", classNameStr]]
+                          andNotContainsOneOfStrs:@[@"+"]]) {
             self.classNameImportStr = invocation.buffer.lines[i];
-        } else if ([contentStr containsString:@"view.h\""] ||
-                   [contentStr containsString:@"bar.h\""] ||
-                   [contentStr containsString:@"cell.h\""]) {
+        } else if ([contentStr checkHasContainsOneOfStrs:@[@"view.h\"", @"bar.h\"", @"cell.h\""]
+                                 andNotContainsOneOfStrs:@[@"+"]]) {
             [self.viewsArray addObject:invocation.buffer.lines[i]];
-        } else if ([contentStr containsString:@"manager.h\""] ||
-                   [contentStr containsString:@"logic.h\""] ||
-                   [contentStr containsString:@"helper.h\""]) {
+        } else if ([contentStr checkHasContainsOneOfStrs:@[@"manager.h\"", @"logic.h\"", @"helper.h\""]
+                                 andNotContainsOneOfStrs:@[@"+"]]) {
             [self.managerArray addObject:invocation.buffer.lines[i]];
-        } else if ([contentStr containsString:@"controller.h\""]) {
+        } else if ([contentStr checkHasContainsOneOfStrs:@[@"controller.h\"", @"VC.h\"", @"Vc.h\""]
+                                 andNotContainsOneOfStrs:@[@"+"]]) {
             [self.controllerArray addObject:invocation.buffer.lines[i]];
-        } else if ([contentStr containsString:@".h>"]) {
+        } else if ([contentStr checkHasContainsOneOfStrs:@[@".h>"]
+                                 andNotContainsOneOfStrs:@[]]) {
             [self.thirdLibArray addObject:invocation.buffer.lines[i]];
-        } else if ([contentStr containsString:@"model.h\""]) {
+        } else if ([contentStr checkHasContainsOneOfStrs:@[@"model.h\""]
+                                 andNotContainsOneOfStrs:@[@"+"]]) {
             [self.modelArray addObject:invocation.buffer.lines[i]];
         } else if ([contentStr containsString:@"+"]) {
             [self.categoryArray addObject:invocation.buffer.lines[i]];
@@ -220,7 +222,7 @@
     if (commentLastIndex == -1) {
         return 0;
     } else {
-        return commentLastIndex + 2;
+        return commentLastIndex + 1;
     }
 }
 

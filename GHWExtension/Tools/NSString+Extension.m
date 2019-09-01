@@ -86,4 +86,20 @@
     return propertyNameStr;
 }
 
+- (BOOL)checkHasContainsOneOfStrs:(NSArray *)strArray andNotContainsOneOfStrs:(NSArray *)noHasStrsArray {
+    BOOL tag0Success = NO;
+    BOOL tag1Success = YES;
+    for (NSString *tempStr in strArray) {
+        if ([self containsString:tempStr]) {
+            tag0Success = YES;
+        }
+    }
+    for (NSString *tempStr in noHasStrsArray) {
+        if ([self containsString:tempStr]) {
+            tag1Success = NO;
+        }
+    }
+    return tag0Success && tag1Success;
+}
+
 @end
