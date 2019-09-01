@@ -112,7 +112,7 @@
     }
     for (NSInteger i = startIndex; i > 0; i--) {
         NSString *contentStr = invocation.buffer.lines[i];
-        if ([contentStr containsString:@"@interface"] &&
+        if ([contentStr containsString:kInterface] &&
             [contentStr containsString:@"("] &&
             [contentStr containsString:@")"]) {
             
@@ -143,24 +143,24 @@
 }
 
 - (NSString *)fetchDelegateDeclareStrWithClassName:(NSString *)classNameStr {
-    if ([classNameStr isEqualToString:@"UITableView"]) {
+    if ([classNameStr isEqualToString:kUITableView]) {
         return @"UITableViewDelegate, UITableViewDataSource";
-    } else if ([classNameStr isEqualToString:@"UICollectionView"]) {
+    } else if ([classNameStr isEqualToString:kUICollectionView]) {
         return @"UICollectionViewDelegate, UICollectionViewDataSource";
-    } else if ([classNameStr isEqualToString:@"UIScrollView"]) {
+    } else if ([classNameStr isEqualToString:kUIScrollView]) {
         return @"UIScrollViewDelegate";
     }
     return @"";
 }
 
 - (NSArray *)fetchMethodsLinesArrayWithClassName:(NSString *)classNameStr {
-    if ([classNameStr isEqualToString:@"UITableView"]) {
+    if ([classNameStr isEqualToString:kUITableView]) {
         NSArray *formaterArr = [[kAddLazyCodeTableViewDataSourceAndDelegate componentsSeparatedByString:@"\n"] arrayByAddingObject:@""];
         return formaterArr;
-    } else if ([classNameStr isEqualToString:@"UICollectionView"]) {
+    } else if ([classNameStr isEqualToString:kUICollectionView]) {
         NSArray *formaterArr = [[kAddLazyCodeUICollectionViewDelegate componentsSeparatedByString:@"\n"] arrayByAddingObject:@""];
         return formaterArr;
-    } else if ([classNameStr isEqualToString:@"UIScrollView"]) {
+    } else if ([classNameStr isEqualToString:kUIScrollView]) {
         NSArray *formaterArr = [[kAddLazyCodeUIScrollViewDelegate componentsSeparatedByString:@"\n"] arrayByAddingObject:@""];
         return formaterArr;
     }
@@ -171,7 +171,7 @@
 -(void)addBufferInsertInvocation:(XCSourceEditorCommandInvocation *)invocation andFromIndex:(NSInteger)startIndex {
     NSInteger settterIndex = [invocation.buffer.lines indexOfFirstItemContainStr:@"#pragma mark - Setter / Getter" fromIndex:startIndex];
     if (settterIndex == NSNotFound) {
-        NSInteger impIndex = [invocation.buffer.lines indexOfFirstItemContainStr:@"@implementation" fromIndex:startIndex];
+        NSInteger impIndex = [invocation.buffer.lines indexOfFirstItemContainStr:kImplementation fromIndex:startIndex];
         settterIndex = [invocation.buffer.lines indexOfFirstItemContainStr:@"@end" fromIndex:impIndex];
     } else {
         settterIndex = settterIndex + 1;
@@ -186,7 +186,7 @@
 - (void)addAllDelegateMethodList:(XCSourceEditorCommandInvocation *)invocation andStartLine:(NSInteger)startLine {
     NSInteger insertIndex = [invocation.buffer.lines indexOfFirstItemContainStr:@"#pragma mark - Setter / Getter" fromIndex:startLine];
     if (insertIndex == NSNotFound) {
-        NSInteger impIndex = [invocation.buffer.lines indexOfFirstItemContainStr:@"@implementation" fromIndex:startLine];
+        NSInteger impIndex = [invocation.buffer.lines indexOfFirstItemContainStr:kImplementation fromIndex:startLine];
         insertIndex = [invocation.buffer.lines indexOfFirstItemContainStr:@"@end" fromIndex:impIndex];
     } else {
         insertIndex = insertIndex - 1;
@@ -198,27 +198,6 @@
     }
 }
 
--(void)addBufferWithCurrentLineIndex:(NSInteger)currentLineIndex formaterArray:(NSMutableArray *)formaterArray  invocation:(XCSourceEditorCommandInvocation *)invocation {
-    //这里的循环主要就是开始 在检测到的下一行开始轮询
-    for (NSInteger i = currentLineIndex + 1; i < formaterArray.count + currentLineIndex + 1; i ++) {
-        NSArray *formatArr = [formaterArray objectAtIndex:formaterArray.count - i - 1  + (currentLineIndex + 1 )];
-        for (int j = 0; j <formatArr.count ; j ++) {
-            [invocation.buffer.lines insertObject:formatArr[j] atIndex:currentLineIndex + 1  + j];
-        }
-    }
-}
--(BOOL)checkCurrentString:(NSString *)lineString isContainsString:(NSString *)isContainsString{
-    if ([lineString containsString:isContainsString]){
-        return YES;
-    }
-    return NO;
-}
--(void)addCheckLineCoutWithCurrentIndex:(NSInteger)currentIndex formaterArray:(NSMutableArray *)formaterArray{
-    for (NSInteger i = currentIndex + 1; i < formaterArray.count + currentIndex + 1; i ++) {
-        NSArray *formatArr = [formaterArray objectAtIndex:formaterArray.count - i - 1  + (currentIndex + 1 )];
-        self.lineCount += formatArr.count;
-    }
-}
 //懒加载
 - (NSArray *)getterForClassName:(NSString *)className andPropertyName:(NSString *)propertyName{
     NSString *str = @"";
@@ -226,54 +205,19 @@
         str = [NSString stringWithFormat:kLazyButtonCode, className, propertyName, propertyName, propertyName, className, propertyName, propertyName, propertyName, propertyName, propertyName];
     } else if ([className containsString:kUILabel]) {
         str = [NSString stringWithFormat:kLazyLabelCode, className, propertyName, propertyName, propertyName, className, propertyName, propertyName, propertyName, propertyName, propertyName];
-    } else if ([className containsString:@"UIScrollView"]) {
+    } else if ([className containsString:kUIScrollView]) {
         str = [NSString stringWithFormat:kLazyScrollViewCode, className, propertyName, propertyName, propertyName, className, propertyName, propertyName, propertyName, propertyName];
-    } else if ([className containsString:@"UITableView"]) {
+    } else if ([className containsString:kUITableView]) {
         str = [NSString stringWithFormat:kLazyUITableViewCode, className, propertyName, propertyName, propertyName, className, propertyName, propertyName, propertyName, propertyName, propertyName, propertyName, propertyName, propertyName, propertyName, propertyName];
-    } else if ([className containsString:@"UICollectionView"]) {
+    } else if ([className containsString:kUICollectionView]) {
         str = [NSString stringWithFormat:kLazyUICollectionViewCode, className, propertyName, propertyName, propertyName, className, propertyName, propertyName, propertyName, propertyName];
-    }  else if ([className containsString:@"UIImageView"]) {
+    }  else if ([className containsString:kUIImageView]) {
         str = [NSString stringWithFormat:kLazyImageViewCode, className, propertyName, propertyName, propertyName, className, propertyName, propertyName, propertyName];
     } else {
         str = [NSString stringWithFormat:kASCommonFormater,className,propertyName,propertyName,propertyName,className,propertyName];
     }
     NSArray *formaterArr = [[str componentsSeparatedByString:@"\n"] arrayByAddingObject:@""];
     return formaterArr;
-}
-//获取布局
-- (NSArray *)addConstraintsForClassName:(NSString *)className PropertyName:(NSString *)propertyName {
-    if ([className containsString:kViewModel]) {
-          return [NSMutableArray array];
-    }else if ([className containsString:kButton] || [className containsString:kView] ||[className containsString:kLabel] || [className containsString:kUIImageView] || [className containsString:kTextField] || [className containsString:kTextView]) {
-        NSString *str = [NSString stringWithFormat:kASMasonryFormater,propertyName];
-        NSArray *conArr = [[str componentsSeparatedByString:@"\n"] arrayByAddingObject:@""];
-        return conArr;
-    }
-    return [NSMutableArray array];
-}
- //获取添加subView
-- (NSArray *)addSubViewForClassName:(NSString *)className PropertyName:(NSString *)propertyName {
-    if ([className containsString:kViewModel]) {
-        return [NSMutableArray array];
-    }else if ([className containsString:kButton] || [className containsString:kView] ||[className containsString:kLabel] || [className containsString:kUIImageView] || [className containsString:kTextField] || [className containsString:kTextView]) {
-        NSString *str = [NSString stringWithFormat:kASAddsubviewFormater,propertyName];
-        NSArray *conArr = [[str componentsSeparatedByString:@"\n"] arrayByAddingObject:@""];
-        return conArr;
-    }
-    return [NSMutableArray array];
-}
-//初始化所有属性
-- (NSArray *)propertyInitForClassName:(NSString *)className PropertyName:(NSString *)propertyName {
-     NSString *str = @"";
-    if ([className containsString:kButton]) {
-       str = [NSString stringWithFormat:kUIButtonInitFormater,propertyName,propertyName];
-    }else if([className containsString:kLabel]){
-        str = [NSString stringWithFormat:kLabelInitFormater,propertyName];
-    }else if([className containsString:kUIImageView]){
-        str = [NSString stringWithFormat:kUIImageViewInitFormater,propertyName];
-    }
-    NSArray *conArray = [[str componentsSeparatedByString:@"\n"] arrayByAddingObject:@""];
-    return conArray;
 }
 #pragma mark - Get
 

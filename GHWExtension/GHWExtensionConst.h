@@ -18,24 +18,17 @@
 #import "NSString+Extension.h"
 #import "NSMutableArray+GHWExtension.h"
 
-static NSString *const kGetterSetterFormater = @"#pragma mark - Setter / Getter";
-static NSString *const kAddSubviewFormater = @"- (void)addSubviews" ;
-static NSString *const kMasonryFormater = @"- (void)addConstraints";
-static NSString *const kInitFormater = @"[self bindViewModel]";
 
 /*************************************************************************/
 
-static NSString *const kCommand = @"Command";
-static NSString *const kButton =  @"Button";
 static NSString *const kUIButton =  @"UIButton";
 static NSString *const kUILabel =  @"UILabel";
-static NSString *const kView = @"View";
-static NSString *const kViewModel = @"ViewModel";
-static NSString *const kLabel = @"Label";
-static NSString *const kUIImageView = @"UIImageView";
-static NSString *const kTextField = @"TextField";
-static NSString *const kTextView = @"TextView";
-
+static NSString *const kUIScrollView =  @"UIScrollView";
+static NSString *const kUITableView =  @"UITableView";
+static NSString *const kUICollectionView =  @"UICollectionView";
+static NSString *const kUIImageView =  @"UIImageView";
+static NSString *const kImplementation = @"@implementation";
+static NSString *const kInterface = @"@interface";
 
 /******************************* initView ******************************************/
 static NSString * const kInitViewExtensionCode = @"@interface %@ ()\n\n\n\n@end\n";
@@ -44,23 +37,8 @@ static NSString * const kInitViewLifeCycleCode = @"\n- (instancetype)initWithFra
 
 /*******************************  addlazyCode  ******************************************/
 //自定义内容格式
-static NSString *const kASButtonFormater = @"- (%@ *)%@{\n    if (_%@ == nil) {\n        _%@ = [[%@ alloc] init];\n        [_%@ setTitle:<#(nullable NSString *)#> forState:UIControlStateNormal];\n        [_%@ setImage:[UIImage imageNamed:<#(nullable NSString *)#>] forState:UIControlStateNormal];\n        [_%@ setTitleColor:<#(nullable UIColor *)#> forState:UIControlStateNormal];\n        _%@.titleLabel.font =  <#UIFONT_IOS_DEFAULT_6#>;\n        _%@.layer.cornerRadius = <#EVO_PIX_5#>;\n        _%@.layer.masksToBounds = YES;\n    }\n    return _%@;\n}";
-
-static NSString *const kASUILabelFormater = @"- (%@ *)%@{\n    if (_%@ == nil) {\n        _%@ = [[%@ alloc] init];\n        _%@.text = <#(nullable NSString *)#>;\n        _%@.font = <#UIFONT_IOS_DEFAULT_6#>;\n        _%@.textColor = <#UICOLOR_SOHU_PHE_G5#>;\n        _%@.textAlignment = <#NSTextAlignmentLeft#>;\n   }\n    return _%@;\n}";
-
-static NSString *const kASMasonryFormater = @"    [self.%@ mas_makeConstraints:^(MASConstraintMaker *make) {\n        make.top.equalTo(self.<#UIView#>).offset(<#EVO_PIX_4#>);\n        make.bottom.equalTo(self.<#UIView#>).offset(<#EVO_PIX_4#>);\n        make.left.equalTo(self.<#UIView#>).offset(<#EVO_PIX_4#>);\n        make.right.equalTo(self.<#UIView#>).offset(<#EVO_PIX_4#>);\n        make.height.mas_equalTo(<#EVO_PIX_4#>);\n        make.width.mas_equalTo(<#EVO_PIX_4#>);\n    }];";
-
-static NSString *const kASCommandFormater = @"-(RACCommand *)%@{  \n   if (!_%@) {\n        @weakify(self);\n         _%@ = [[RACCommand alloc]initWithSignalBlock:^RACSignal *(id x) {\n            @strongify(self);\n            return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {\n                [subscriber sendNext:x];\n                [subscriber sendCompleted];\n                return nil;\n            }];\n        }];\n    }\n    return _%@;\n}";
-
-static NSString *const kASAddsubviewFormater = @"    [<#UIView#> addSubview:self.%@];";
 
 static NSString *const kASCommonFormater = @"\n- (%@ *)%@{\n    if (_%@ == nil) {\n        _%@ = [[%@ alloc] init];\n    }\n    return _%@;\n}";
-
-static NSString *const kLabelInitFormater = @"        self.%@.text = <#(nullable NSString *)#>;";
-
-static NSString *const kUIButtonInitFormater = @"        [self.%@ setTitle:<#(nullable NSString *)#> forState:UIControlStateNormal];\n        [self.%@ setImage:[UIImage imageNamed:<#(nullable NSString *)#>] forState:UIControlStateNormal];";
-
-static NSString *const kUIImageViewInitFormater = @"        [self.%@ sd_setImageWithURL:[NSURL URLWithString:<#(nullable NSString *)#>] placeholderImage:[UIImage imageNamed:<#(nullable NSString *)#>]];";
 
 static NSString * const kAddLazyCodeTableViewDataSourceAndDelegate = @"\n#pragma mark - tableView DataSource\n\n- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {\n    return 5;\n}\n\n- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {\n    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@\"UITableViewCell\"];\n    if (indexPath.row % 2 == 0) {\n        cell.contentView.backgroundColor = [UIColor blueColor];\n     } else {\n        cell.contentView.backgroundColor = [UIColor redColor];\n    }\n    return cell;\n}\n\n#pragma mark - tableView Delegate\n\n- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {\n    return 60;\n}\n\n-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {\n\n}";
 

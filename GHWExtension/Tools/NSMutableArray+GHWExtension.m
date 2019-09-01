@@ -8,6 +8,7 @@
 
 #import "NSMutableArray+GHWExtension.h"
 #import "NSString+Extension.h"
+#import "GHWExtensionConst.h"
 
 @implementation NSMutableArray (GHWExtension)
 
@@ -51,18 +52,18 @@
     NSString *className = @"";
     for (int i = 0; i < [self count]; i++) {
         NSString *tempStr = [self[i] deleteSpaceAndNewLine];
-        if ([tempStr hasPrefix:@"@implementation"]) {
+        if ([tempStr hasPrefix:kImplementation]) {
             if ([tempStr containsString:@"("]) {
-                className = [tempStr stringBetweenLeftStr:@"@implementation" andRightStr:@"("];
+                className = [tempStr stringBetweenLeftStr:kImplementation andRightStr:@"("];
             } else {
-                className = [tempStr substringFromIndex:[@"@implementation" length]];
+                className = [tempStr substringFromIndex:[kImplementation length]];
             }
-        } else if ([tempStr hasPrefix:@"@interface"]) {
+        } else if ([tempStr hasPrefix:kInterface]) {
             if ([tempStr containsString:@":"]) {
-                className = [tempStr stringBetweenLeftStr:@"@interface" andRightStr:@":"];
+                className = [tempStr stringBetweenLeftStr:kInterface andRightStr:@":"];
 
             } else if ([tempStr containsString:@"("]) {
-                className = [tempStr stringBetweenLeftStr:@"@interface" andRightStr:@"("];
+                className = [tempStr stringBetweenLeftStr:kInterface andRightStr:@"("];
 
             }
         }
@@ -74,7 +75,7 @@
     NSInteger impIndex = -1;
     for (int i = 0; i < [self count]; i++) {
         NSString *tempStr = [self[i] deleteSpaceAndNewLine];
-        if ([tempStr hasPrefix:@"@implementation"]) {
+        if ([tempStr hasPrefix:kImplementation]) {
             impIndex = i;
         }
     }

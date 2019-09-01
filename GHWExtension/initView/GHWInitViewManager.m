@@ -42,7 +42,7 @@
     
     // 添加 Life Cycle 代码
     if ([invocation.buffer.lines indexOfFirstItemContainStr:@"- (instancetype)initWithFrame"] == NSNotFound) {
-        NSInteger lifeCycleIndex = [invocation.buffer.lines indexOfFirstItemContainStr:@"@implementation"];
+        NSInteger lifeCycleIndex = [invocation.buffer.lines indexOfFirstItemContainStr:kImplementation];
         
         if (lifeCycleIndex != NSNotFound) {
             lifeCycleIndex = lifeCycleIndex + 1;
