@@ -84,16 +84,20 @@
                     firstStr = (NSString *)obj;
                 }
             }];
-            NSInteger firstStrIndex = [invocation.buffer.lines indexOfFirstItemContainStr:firstStr];
-            if (firstStrIndex == NSNotFound) {
+            
+            NSString *currentClassName = [invocation.buffer.lines fetchCurrentClassNameWithCurrentIndex:startLine];
+            NSInteger impIndex = [invocation.buffer.lines indexOfFirstItemContainStrsArray:@[kImplementation, currentClassName]];
+            NSInteger endIndex = [invocation.buffer.lines indexOfFirstItemContainStr:kEnd fromIndex:impIndex];
+            NSInteger existIndex = [invocation.buffer.lines indexOfFirstItemContainStr:firstStr fromIndex:impIndex andToIndex:endIndex];
+            if (existIndex == NSNotFound) {
                 [self.lazyArray addObject:lazyGetArray];
                 // 协议方法
                 NSArray *delegateMethodLinesArray = [self fetchMethodsLinesArrayWithClassName:classNameStr];
                 if ([delegateMethodLinesArray count]) {
                     [self.delegateMethodsArray addObject:delegateMethodLinesArray];
                 }
-
             }
+
         }
 
         // 在 <>里面加上 UITableViewDelegate 等
@@ -183,12 +187,7 @@
 }
 
 - (void)addAllDelegateMethodList:(XCSourceEditorCommandInvocation *)invocation andStartLine:(NSInteger)startLine {
-    
     NSString *currentClassName = [invocation.buffer.lines fetchCurrentClassNameWithCurrentIndex:startLine];
-    
-    
-    
-//    NSInteger impIndex = [invocation.buffer.lines indexOfFirstItemContainStr:kImplementation fromIndex:startLine];
     NSInteger impIndex = [invocation.buffer.lines indexOfFirstItemContainStrsArray:@[kImplementation, currentClassName]];
     NSInteger endIndex = [invocation.buffer.lines indexOfFirstItemContainStr:kEnd fromIndex:impIndex];
     NSInteger insertIndex = [invocation.buffer.lines indexOfFirstItemContainStr:@"#pragma mark - Setter / Getter" fromIndex:impIndex andToIndex:endIndex];
