@@ -77,16 +77,20 @@
         
         //懒加载
         NSArray *lazyGetArray = [self getterForClassName:classNameStr andPropertyName:propertyNameStr];
-        if (lazyGetArray.count > 0) {
-            [self.lazyArray addObject:lazyGetArray];
+        if (lazyGetArray.count > 1) {
+            NSString *firstStr = lazyGetArray[1];
+            NSInteger firstStrIndex = [invocation.buffer.lines indexOfFirstItemContainStr:firstStr];
+            if (firstStrIndex == NSNotFound) {
+                [self.lazyArray addObject:lazyGetArray];
+                // 协议方法
+                NSArray *delegateMethodLinesArray = [self fetchMethodsLinesArrayWithClassName:classNameStr];
+                if ([delegateMethodLinesArray count]) {
+                    [self.delegateMethodsArray addObject:delegateMethodLinesArray];
+                }
+
+            }
         }
 
-        // 协议方法
-        NSArray *delegateMethodLinesArray = [self fetchMethodsLinesArrayWithClassName:classNameStr];
-        if ([delegateMethodLinesArray count]) {
-            [self.delegateMethodsArray addObject:delegateMethodLinesArray];
-        }
-        
         // 在 <>里面加上 UITableViewDelegate 等
         [self addDelegateDeclareWithClassName:classNameStr andInvocation:invocation andStartIndex:startLine];
     }
