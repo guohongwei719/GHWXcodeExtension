@@ -25,40 +25,8 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GHWExtension/addLazyCode/GHWAddLazyCodeManager.m"
-            timestampString = "588989750.08242"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "-initWithFormaterArray:invocation:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GHWExtension/addLazyCode/GHWAddLazyCodeManager.m"
-            timestampString = "588989750.082777"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "-initWithFormaterArray:invocation:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "GHWExtension/sortImport/GHWSortImportManager.m"
-            timestampString = "588961702.689712"
+            timestampString = "588992232.759765"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "132"
@@ -74,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GHWExtension/sortImport/GHWSortImportManager.m"
-            timestampString = "588961702.690032"
+            timestampString = "588992232.7598211"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "73"
@@ -90,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GHWExtension/sortImport/GHWSortImportManager.m"
-            timestampString = "588961702.690232"
+            timestampString = "588992232.75986"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "54"
@@ -106,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GHWExtension/sortImport/GHWSortImportManager.m"
-            timestampString = "588961702.690614"
+            timestampString = "588992232.759896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "89"
@@ -122,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GHWExtension/sortImport/GHWSortImportManager.m"
-            timestampString = "588961702.690802"
+            timestampString = "588992232.75993"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "94"
@@ -138,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GHWExtension/sortImport/GHWSortImportManager.m"
-            timestampString = "588961702.6909879"
+            timestampString = "588992232.759964"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "96"
@@ -154,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GHWExtension/sortImport/GHWSortImportManager.m"
-            timestampString = "588961702.691173"
+            timestampString = "588992232.7599961"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "98"
@@ -170,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GHWExtension/sortImport/GHWSortImportManager.m"
-            timestampString = "588961702.691359"
+            timestampString = "588992232.760029"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "100"
@@ -186,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GHWExtension/sortImport/GHWSortImportManager.m"
-            timestampString = "588961702.691547"
+            timestampString = "588992232.760061"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "102"
@@ -202,7 +170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GHWExtension/sortImport/GHWSortImportManager.m"
-            timestampString = "588961702.691734"
+            timestampString = "588992232.760093"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "105"
@@ -218,7 +186,7 @@
                   moduleName = "GHWExtension"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/guohongwei719/Desktop/GHWXcodeExtension/GHWExtension/sortImport/GHWSortImportManager.m"
-                  timestampString = "588988016.763063"
+                  timestampString = "588991926.95007"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "105"
@@ -233,7 +201,7 @@
                   moduleName = "GHWExtension"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/guohongwei719/Desktop/GHWXcodeExtension/GHWExtension/sortImport/GHWSortImportManager.m"
-                  timestampString = "588988016.765383"
+                  timestampString = "588991926.951986"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "105"
@@ -260,7 +228,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GHWExtension/sortImport/GHWSortImportManager.m"
-            timestampString = "588961702.6919219"
+            timestampString = "588992232.7601269"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "79"
@@ -276,7 +244,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GHWExtension/sortImport/GHWSortImportManager.m"
-            timestampString = "588961702.692111"
+            timestampString = "588992232.76016"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "145"
@@ -292,7 +260,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GHWExtension/sortImport/GHWSortImportManager.m"
-            timestampString = "588961702.6922981"
+            timestampString = "588992232.760192"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "153"
@@ -308,7 +276,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GHWExtension/sortImport/GHWSortImportManager.m"
-            timestampString = "588961702.692482"
+            timestampString = "588992232.760226"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "160"
@@ -324,7 +292,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GHWExtension/sortImport/GHWSortImportManager.m"
-            timestampString = "588961702.692664"
+            timestampString = "588992232.76026"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "168"
@@ -340,7 +308,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GHWExtension/sortImport/GHWSortImportManager.m"
-            timestampString = "588961702.692848"
+            timestampString = "588992232.760291"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "175"
@@ -356,7 +324,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GHWExtension/sortImport/GHWSortImportManager.m"
-            timestampString = "588961702.693031"
+            timestampString = "588992232.760323"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "182"
@@ -372,7 +340,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GHWExtension/sortImport/GHWSortImportManager.m"
-            timestampString = "588961702.693226"
+            timestampString = "588992232.7603559"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "189"
@@ -388,7 +356,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GHWExtension/sortImport/GHWSortImportManager.m"
-            timestampString = "588961702.69341"
+            timestampString = "588992232.760389"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "137"
@@ -404,12 +372,76 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GHWExtension/addLazyCode/GHWAddLazyCodeManager.m"
-            timestampString = "588989750.083222"
+            timestampString = "588992232.760422"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "-initWithFormaterArray:invocation:"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "-addDelegateDeclareWithClassName:andInvocation:andStartIndex:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GHWExtension/addLazyCode/GHWAddLazyCodeManager.m"
+            timestampString = "588992232.7607141"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "-addDelegateDeclareWithClassName:andInvocation:andStartIndex:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GHWExtension/addLazyCode/GHWAddLazyCodeManager.m"
+            timestampString = "588992232.760909"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "-addDelegateDeclareWithClassName:andInvocation:andStartIndex:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GHWExtension/addLazyCode/GHWAddLazyCodeManager.m"
+            timestampString = "588992232.761098"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "-addDelegateDeclareWithClassName:andInvocation:andStartIndex:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GHWExtension/addLazyCode/GHWAddLazyCodeManager.m"
+            timestampString = "588992232.761288"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "-addDelegateDeclareWithClassName:andInvocation:andStartIndex:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -86,10 +86,60 @@
         if ([delegateMethodLinesArray count]) {
             [self.delegateMethodsArray addObject:delegateMethodLinesArray];
         }
+        
+        // 在 <>里面加上 UITableViewDelegate 等
+        [self addDelegateDeclareWithClassName:classNameStr andInvocation:invocation andStartIndex:startLine];
     }
     [self addAllDelegateMethodList:invocation andStartLine:startLine];
     [self addBufferInsertInvocation:invocation andFromIndex:startLine];
 
+}
+
+- (void)addDelegateDeclareWithClassName:(NSString *)className
+                          andInvocation:(XCSourceEditorCommandInvocation *)invocation
+                          andStartIndex:(NSInteger)startIndex {
+    if ([[self fetchDelegateDeclareStrWithClassName:className] length] == 0) {
+        return;
+    }
+    for (NSInteger i = startIndex; i > 0; i--) {
+        NSString *contentStr = invocation.buffer.lines[i];
+        if ([contentStr containsString:@"@interface"] &&
+            [contentStr containsString:@"("] &&
+            [contentStr containsString:@")"]) {
+            
+            NSString *tempStr = [self fetchDelegateDeclareStrWithClassName:className];
+            NSString *tempStr0 = @"";
+            if ([tempStr containsString:@","]) {
+                NSArray *tempArray = [tempStr componentsSeparatedByString:@","];
+                tempStr0 = [tempArray[0] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+            } else {
+                tempStr0 = tempStr;
+            }
+            if ([contentStr containsString:tempStr0]) {
+                break;
+            }
+            
+            if ([contentStr containsString:@"<"] && [contentStr containsString:@">"]) {
+                NSRange tempRange = [contentStr rangeOfString:@"<"];
+                NSString *frontStr = [contentStr substringToIndex:tempRange.location];
+                NSString *endStr = [contentStr substringFromIndex:tempRange.location + 1];
+                invocation.buffer.lines[i] = [NSString stringWithFormat:@"%@<%@, %@", frontStr, [self fetchDelegateDeclareStrWithClassName:className], endStr];
+            } else {
+                invocation.buffer.lines[i] = [NSString stringWithFormat:@"%@ <%@>", [contentStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]], [self fetchDelegateDeclareStrWithClassName:className]];
+            }
+            
+            break;
+        }
+    }
+}
+
+- (NSString *)fetchDelegateDeclareStrWithClassName:(NSString *)classNameStr {
+    if ([classNameStr isEqualToString:@"UITableView"]) {
+        return @"UITableViewDelegate, UITableViewDataSource";
+    } else if ([classNameStr isEqualToString:@"UICollectionView"]) {
+        return @"UICollectionViewDelegate, UICollectionViewDataSource";
+    }
+    return @"";
 }
 
 - (NSArray *)fetchMethodsLinesArrayWithClassName:(NSString *)classNameStr {
