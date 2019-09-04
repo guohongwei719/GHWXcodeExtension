@@ -29,10 +29,7 @@
 - (void)processCodeWithInvocation:(XCSourceEditorCommandInvocation *)invocation {
     [self.indexSet removeAllIndexes];
     
-    
-
     // 添加 extension 代码
-    
     NSString *className = [invocation.buffer.lines fetchClassName];
     if ([invocation.buffer.lines indexOfFirstItemContainStr:[NSString stringWithFormat:@"@interface %@ ()", className]] == NSNotFound) {
         NSString *extensionStr = [NSString stringWithFormat:kInitViewExtensionCode, className];

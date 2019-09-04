@@ -32,6 +32,12 @@ static NSString *const kInterface = @"@interface";
 static NSString *const kEnd = @"@end";
 
 
+/*******************************  addComment  ******************************************/
+static NSString * const kAddCommentExtensionCode = @"/**\n *\n *\n *\n *\n *\n *\n *\n *\n */";
+static NSString * const kAddCommentHeaderExtensionCode = @"/**\n *  Description\n *";
+static NSString * const kAddCommentFooterExtensionCode = @" *\n *  @return return value description\n */";
+static NSString * const kAddCommentFooterNoParamsExtensionCode = @" *  @return return value description\n */";
+
 /******************************* initView ******************************************/
 static NSString * const kInitViewExtensionCode = @"@interface %@ ()\n\n\n\n@end\n";
 static NSString * const kInitViewLifeCycleCode = @"\n- (instancetype)initWithFrame:(CGRect)frame {\n    self = [super initWithFrame:frame];\n    if (self) {\n        [self configViews];\n    }\n    return self;\n}\n\n- (void)configViews {\n\n}\n\n#pragma mark - Public Methods\n\n#pragma mark - Private Methods\n\n#pragma mark - Setter / Getter";

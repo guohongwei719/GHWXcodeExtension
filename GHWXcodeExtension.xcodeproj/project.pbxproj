@@ -21,6 +21,7 @@
 		EDA60A602317F43500B5FA3D /* SourceEditorCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA60A5F2317F43500B5FA3D /* SourceEditorCommand.m */; };
 		EDA60A652317F43500B5FA3D /* GHWExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EDA60A562317F43500B5FA3D /* GHWExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EDA60A752317F4BF00B5FA3D /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA60A722317F4BF00B5FA3D /* NSString+Extension.m */; };
+		EDBFBD1D231FF38000490C20 /* GHWAddCommentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EDBFBD1C231FF38000490C20 /* GHWAddCommentManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,8 @@
 		EDA60A622317F43500B5FA3D /* GHWExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GHWExtension.entitlements; sourceTree = "<group>"; };
 		EDA60A712317F4BF00B5FA3D /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
 		EDA60A722317F4BF00B5FA3D /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
+		EDBFBD1B231FF38000490C20 /* GHWAddCommentManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GHWAddCommentManager.h; sourceTree = "<group>"; };
+		EDBFBD1C231FF38000490C20 /* GHWAddCommentManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GHWAddCommentManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +174,7 @@
 		EDA60A5A2317F43500B5FA3D /* GHWExtension */ = {
 			isa = PBXGroup;
 			children = (
+				EDBFBD1A231FF35500490C20 /* addComment */,
 				ED6552322318FA500036A04A /* initView */,
 				ED65522B2318F98E0036A04A /* addLazyCode */,
 				ED6552342318FA720036A04A /* sortImport */,
@@ -195,6 +199,15 @@
 				ED65523F23190CE00036A04A /* NSMutableArray+GHWExtension.m */,
 			);
 			path = Tools;
+			sourceTree = "<group>";
+		};
+		EDBFBD1A231FF35500490C20 /* addComment */ = {
+			isa = PBXGroup;
+			children = (
+				EDBFBD1B231FF38000490C20 /* GHWAddCommentManager.h */,
+				EDBFBD1C231FF38000490C20 /* GHWAddCommentManager.m */,
+			);
+			path = addComment;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,6 +325,7 @@
 				ED6552372318FB180036A04A /* GHWInitViewManager.m in Sources */,
 				EDA60A602317F43500B5FA3D /* SourceEditorCommand.m in Sources */,
 				ED65523A2318FBB70036A04A /* GHWSortImportManager.m in Sources */,
+				EDBFBD1D231FF38000490C20 /* GHWAddCommentManager.m in Sources */,
 				ED65524023190CE00036A04A /* NSMutableArray+GHWExtension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

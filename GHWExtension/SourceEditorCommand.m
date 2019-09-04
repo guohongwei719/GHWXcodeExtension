@@ -10,10 +10,12 @@
 #import "GHWInitViewManager.h"
 #import "GHWAddLazyCodeManager.h"
 #import "GHWSortImportManager.h"
+#import "GHWAddCommentManager.h"
 
 @implementation SourceEditorCommand
 
-- (void)performCommandWithInvocation:(XCSourceEditorCommandInvocation *)invocation completionHandler:(void (^)(NSError * _Nullable nilOrError))completionHandler
+- (void)performCommandWithInvocation:(XCSourceEditorCommandInvocation *)invocation
+                   completionHandler:(void (^)(NSError * _Nullable nilOrError))completionHandler
 {
     // Implement your command here, invoking the completion handler when done. Pass it nil on success, and an NSError on failure.
     NSString *identifier = invocation.commandIdentifier;
@@ -26,6 +28,8 @@
         [[GHWInitViewManager sharedInstane] processCodeWithInvocation:invocation];
     } else if ([identifier hasPrefix:@"com.jingyao.GHWXcodeExtension.GHWExtension.addLazyCode"]) {
         [[GHWAddLazyCodeManager sharedInstane] processCodeWithInvocation:invocation];
+    } else if ([identifier hasPrefix:@"com.jingyao.GHWXcodeExtension.GHWExtension.addComment"]) {
+        [[GHWAddCommentManager sharedInstane] processCodeWithInvocation:invocation];
     }
     completionHandler(nil);
 }

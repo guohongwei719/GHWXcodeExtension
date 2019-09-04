@@ -34,6 +34,10 @@
              @{XCSourceEditorCommandClassNameKey: @"SourceEditorCommand",
                XCSourceEditorCommandIdentifierKey: @"com.jingyao.GHWXcodeExtension.GHWExtension.addLazyCode",
                XCSourceEditorCommandNameKey: @"addLazyCode"
+               },
+             @{XCSourceEditorCommandClassNameKey: @"SourceEditorCommand",
+               XCSourceEditorCommandIdentifierKey: @"com.jingyao.GHWXcodeExtension.GHWExtension.addComment",
+               XCSourceEditorCommandNameKey: @"addComment"
                }];
 }
 
