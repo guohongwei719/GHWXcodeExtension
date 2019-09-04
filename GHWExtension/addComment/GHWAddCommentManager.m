@@ -37,11 +37,25 @@
         }
     }
     
+    NSMutableString *funcStr = [NSMutableString string];
+    for (NSInteger i = insertIndex; i < [invocation.buffer.lines count]; i++) {
+        NSString *contentStr = invocation.buffer.lines[i];
+        if (![contentStr containsString:@"{"]) {
+            [funcStr appendString:contentStr];
+        } else {
+            NSRange range = [contentStr rangeOfString:@"{"];
+            [funcStr appendString:[contentStr substringToIndex:range.location]];
+            break;
+        }
+    }
+    
     NSArray *commentHeaderLines = [kAddCommentHeaderExtensionCode componentsSeparatedByString:@"\n"];
     NSArray *commentFooterLines = [kAddCommentFooterExtensionCode componentsSeparatedByString:@"\n"];
     NSArray *commentFooterNoParamsLines = [kAddCommentFooterNoParamsExtensionCode componentsSeparatedByString:@"\n"];
     
-    NSArray *commentLines = [invocation.buffer.lines[insertIndex] componentsSeparatedByString:@":"];
+    NSArray *commentLines = [funcStr componentsSeparatedByString:@":"];
+    
+    
     NSMutableArray *mCommentLines = [NSMutableArray arrayWithArray:commentLines];
     [mCommentLines removeObjectAtIndex:0];
     
@@ -64,12 +78,6 @@
             [argsArray addObjectsFromArray:commentFooterNoParamsLines];
         }
     }
-    
-//    if ([argsArray count]) {
-//        [argsArray addObjectsFromArray:commentFooterLines];
-//    } else {
-//        [argsArray addObject:@" */"];
-//    }
     
     [invocation.buffer.lines insertObjects:argsArray atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(insertIndex, [argsArray count])]];
 }
