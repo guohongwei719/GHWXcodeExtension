@@ -191,9 +191,11 @@
         formaterArr = [[kAddLazyCodeUIScrollViewDelegate componentsSeparatedByString:@"\n"] arrayByAddingObject:@""];
         insertStr = @"- (void)scrollViewDidScroll:(UIScrollView *)scrollView";
     }
-    NSInteger alreadyIndex = [invocation.buffer.lines indexOfFirstItemContainStr:insertStr fromIndex:impIndex andToIndex:endIndex];
-    if (alreadyIndex != NSNotFound) {
-        formaterArr = nil;
+    if (insertStr) {
+        NSInteger alreadyIndex = [invocation.buffer.lines indexOfFirstItemContainStr:insertStr fromIndex:impIndex andToIndex:endIndex];
+        if (alreadyIndex != NSNotFound) {
+            formaterArr = nil;
+        }
     }
     
     return formaterArr;
