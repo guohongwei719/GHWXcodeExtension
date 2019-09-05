@@ -93,7 +93,7 @@
             if (existIndex == NSNotFound && alreadyExistLazyMethod == NO) {
                 [self.lazyArray addObject:lazyGetArray];
                 // 协议方法
-                NSArray *delegateMethodLinesArray = [self fetchMethodsLinesArrayWithClassName:classNameStr];
+                NSArray *delegateMethodLinesArray = [self fetchMethodsLinesArrayWithClassName:classNameStr andFromIndex:startLine andInvocation:invocation];
                 if ([delegateMethodLinesArray count]) {
                     [self.delegateMethodsArray addObject:delegateMethodLinesArray];
                 }
@@ -175,18 +175,28 @@
     return @"";
 }
 
-- (NSArray *)fetchMethodsLinesArrayWithClassName:(NSString *)classNameStr {
+- (NSArray *)fetchMethodsLinesArrayWithClassName:(NSString *)classNameStr andFromIndex:(NSInteger)startLine andInvocation:(XCSourceEditorCommandInvocation *)invocation {
+    NSString *currentClassName = [invocation.buffer.lines fetchCurrentClassNameWithCurrentIndex:startLine];
+    NSInteger impIndex = [invocation.buffer.lines indexOfFirstItemContainStrsArray:@[kImplementation, currentClassName]];
+    NSInteger endIndex = [invocation.buffer.lines indexOfFirstItemContainStr:kEnd fromIndex:impIndex];
+    NSString *insertStr = nil;
+    NSArray *formaterArr = nil;
     if ([classNameStr isEqualToString:kUITableView]) {
-        NSArray *formaterArr = [[kAddLazyCodeTableViewDataSourceAndDelegate componentsSeparatedByString:@"\n"] arrayByAddingObject:@""];
-        return formaterArr;
+        formaterArr = [[kAddLazyCodeTableViewDataSourceAndDelegate componentsSeparatedByString:@"\n"] arrayByAddingObject:@""];
+        insertStr = @"- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section";
     } else if ([classNameStr isEqualToString:kUICollectionView]) {
-        NSArray *formaterArr = [[kAddLazyCodeUICollectionViewDelegate componentsSeparatedByString:@"\n"] arrayByAddingObject:@""];
-        return formaterArr;
+        formaterArr = [[kAddLazyCodeUICollectionViewDelegate componentsSeparatedByString:@"\n"] arrayByAddingObject:@""];
+        insertStr = @"- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section";
     } else if ([classNameStr isEqualToString:kUIScrollView]) {
-        NSArray *formaterArr = [[kAddLazyCodeUIScrollViewDelegate componentsSeparatedByString:@"\n"] arrayByAddingObject:@""];
-        return formaterArr;
+        formaterArr = [[kAddLazyCodeUIScrollViewDelegate componentsSeparatedByString:@"\n"] arrayByAddingObject:@""];
+        insertStr = @"- (void)scrollViewDidScroll:(UIScrollView *)scrollView";
     }
-    return nil;
+    NSInteger alreadyIndex = [invocation.buffer.lines indexOfFirstItemContainStr:insertStr fromIndex:impIndex andToIndex:endIndex];
+    if (alreadyIndex != NSNotFound) {
+        formaterArr = nil;
+    }
+    
+    return formaterArr;
 }
 
 //进行判断进行替换
