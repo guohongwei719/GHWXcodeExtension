@@ -83,15 +83,14 @@
 }
 
 - (NSString *)fetchArgumentsWithStr:(NSString *)str {
-    NSArray *tempArray = [str componentsSeparatedByString:@")"];
+    NSRange tempRange = [str rangeOfString:@")" options:NSBackwardsSearch];
+    NSString *subStr = [[str substringFromIndex:tempRange.location + 1] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    
     NSString *argStr = nil;
-    NSString *tempStr = @"";
-    if ([tempArray count] == 2) {
-        tempStr = [tempArray[1] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    }
-    NSArray *argArray = [tempStr componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSArray *argArray = [subStr componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     if ([argArray count]) {
-        argStr = argArray[0];
+        argStr = [argArray[0] deleteSpaceAndNewLine];
         if ([argStr containsString:@"{"]) {
             argStr = [argStr stringByReplacingOccurrencesOfString:@"{" withString:@""];
         }
