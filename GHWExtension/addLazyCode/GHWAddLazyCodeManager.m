@@ -56,23 +56,6 @@
             continue;
         }
         
-        // 修改对应属性行, 规范化
-        NSString *replaceStr = [NSString stringWithFormat:@"@property (nonatomic, strong) %@ *%@", classNameStr, propertyNameStr];
-        if (![contentStr containsString:@"*"]) {
-            replaceStr = [NSString stringWithFormat:@"@property (nonatomic, assign) %@ %@", classNameStr, propertyNameStr];
-        }
-        NSRange suffixRange = [contentStr rangeOfString:@";"];
-        if (suffixRange.location != NSNotFound) {
-            NSString *suffixStr = [contentStr substringFromIndex:suffixRange.location];
-            invocation.buffer.lines[i] = [NSString stringWithFormat:@"%@%@", replaceStr, suffixStr];
-
-        } else {
-            invocation.buffer.lines[i] = [NSString stringWithFormat:@"%@%@", replaceStr, @";"];
-        }
-        if (![invocation.buffer.lines[i] containsString:@"*"]) {
-            continue;
-        }
-        
         
         
         //懒加载
@@ -97,6 +80,8 @@
                 if ([delegateMethodLinesArray count]) {
                     [self.delegateMethodsArray addObject:delegateMethodLinesArray];
                 }
+            } else {
+                [self fixPropertyWithStartLine:startLine andEndLine:endLine andInvocation:invocation];
             }
 
         }
@@ -106,7 +91,47 @@
     }
     [self addAllDelegateMethodList:invocation andStartLine:startLine];
     [self addBufferInsertInvocation:invocation andFromIndex:startLine];
+    
+    // 修改对应属性行, 规范化
 
+//    [self fixPropertyWithStartLine:startLine andEndLine:endLine andInvocation:invocation];
+}
+
+// 修改对应属性行, 规范化
+- (void)fixPropertyWithStartLine:(NSInteger)startLine
+                      andEndLine:(NSInteger)endLine
+                   andInvocation:(XCSourceEditorCommandInvocation *)invocation {
+    
+    for (NSInteger i = startLine; i <= endLine; i++) {
+        NSString *contentStr = invocation.buffer.lines[i];
+        
+        if ([[contentStr deleteSpaceAndNewLine] length] == 0) {
+            continue;
+        }
+        // 获取类名
+        NSString *classNameStr = [contentStr fetchClassNameStr];
+        // 获取属性名或者变量名
+        NSString *propertyNameStr = [contentStr fetchPropertyNameStr];
+        if (!classNameStr || !propertyNameStr) {
+            continue;
+        }
+        
+        // 修改对应属性行, 规范化
+        NSString *replaceStr = [NSString stringWithFormat:@"@property (nonatomic, strong) %@ *%@", classNameStr, propertyNameStr];
+        if (![contentStr containsString:@"*"]) {
+            replaceStr = [NSString stringWithFormat:@"@property (nonatomic, assign) %@ %@", classNameStr, propertyNameStr];
+        }
+        NSRange suffixRange = [contentStr rangeOfString:@";"];
+        if (suffixRange.location != NSNotFound) {
+            NSString *suffixStr = [contentStr substringFromIndex:suffixRange.location];
+            [invocation.buffer.lines replaceObjectAtIndex:i withObject:[NSString stringWithFormat:@"%@%@", replaceStr, suffixStr]];
+        } else {
+            [invocation.buffer.lines replaceObjectAtIndex:i withObject:[NSString stringWithFormat:@"%@%@", replaceStr, @";"]];
+        }
+        if (![invocation.buffer.lines[i] containsString:@"*"]) {
+            continue;
+        }
+    }
 }
 
 - (BOOL)alreadyExistsLazyMethodWithClassName:(NSString *)className
@@ -216,6 +241,17 @@
         NSArray *tempArray = [self.lazyArray objectAtIndex:i];
         [invocation.buffer.lines insertItemsOfArray:tempArray fromIndex:insertIndex];
         insertIndex = insertIndex + [tempArray count];
+    }
+}
+
+
+-(void)addBufferWithCurrentLineIndex:(NSInteger)currentLineIndex formaterArray:(NSMutableArray *)formaterArray  invocation:(XCSourceEditorCommandInvocation *)invocation {
+    //这里的循环主要就是开始 在检测到的下一行开始轮询
+    for (NSInteger i = currentLineIndex + 1; i < formaterArray.count + currentLineIndex + 1; i ++) {
+        NSArray *formatArr = [formaterArray objectAtIndex:formaterArray.count - i - 1  + (currentLineIndex + 1 )];
+        for (int j = 0; j <formatArr.count ; j ++) {
+            [invocation.buffer.lines insertObject:formatArr[j] atIndex:currentLineIndex + 1  + j];
+        }
     }
 }
 
