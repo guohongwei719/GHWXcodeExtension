@@ -55,6 +55,24 @@
         if (!classNameStr || !propertyNameStr) {
             continue;
         }
+
+        
+        
+        // 修改对应属性行, 规范化
+        NSString *replaceStr = [NSString stringWithFormat:@"@property (nonatomic, strong) %@ *%@", classNameStr, propertyNameStr];
+        if (![contentStr containsString:@"*"]) {
+            replaceStr = [NSString stringWithFormat:@"@property (nonatomic, assign) %@ %@", classNameStr, propertyNameStr];
+        }
+        NSRange suffixRange = [contentStr rangeOfString:@";"];
+        if (suffixRange.location != NSNotFound) {
+            NSString *suffixStr = [contentStr substringFromIndex:suffixRange.location];
+            [invocation.buffer.lines replaceObjectAtIndex:i withObject:[NSString stringWithFormat:@"%@%@", replaceStr, suffixStr]];
+        } else {
+            [invocation.buffer.lines replaceObjectAtIndex:i withObject:[NSString stringWithFormat:@"%@%@", replaceStr, @";"]];
+        }
+        if (![invocation.buffer.lines[i] containsString:@"*"]) {
+            continue;
+        }
         
         
         
@@ -81,7 +99,7 @@
                     [self.delegateMethodsArray addObject:delegateMethodLinesArray];
                 }
             } else {
-                [self fixPropertyWithStartLine:i andEndLine:i andInvocation:invocation];
+//                [self fixPropertyWithStartLine:i andEndLine:i andInvocation:invocation];
             }
 
         }

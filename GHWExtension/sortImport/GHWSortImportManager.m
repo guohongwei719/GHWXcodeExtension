@@ -87,7 +87,7 @@
         } else if ([contentStr checkHasContainsOneOfStrs:@[@"view.h\"", @"bar.h\"", @"cell.h\""]
                                  andNotContainsOneOfStrs:@[@"+"]]) {
             [self.viewsArray addObject:invocation.buffer.lines[i]];
-        } else if ([contentStr checkHasContainsOneOfStrs:@[@"manager.h\"", @"logic.h\"", @"helper.h\""]
+        } else if ([contentStr checkHasContainsOneOfStrs:@[@"manager.h\"", @"logic.h\"", @"helper.h\"", @"services.h\"", @"service.h\""]
                                  andNotContainsOneOfStrs:@[@"+"]]) {
             [self.managerArray addObject:invocation.buffer.lines[i]];
         } else if ([contentStr checkHasContainsOneOfStrs:@[@"controller.h\"", @"VC.h\"", @"Vc.h\"", @"vc.h\""]
@@ -96,7 +96,7 @@
         } else if ([contentStr checkHasContainsOneOfStrs:@[@".h>"]
                                  andNotContainsOneOfStrs:@[]]) {
             [self.thirdLibArray addObject:invocation.buffer.lines[i]];
-        } else if ([contentStr checkHasContainsOneOfStrs:@[@"model.h\""]
+        } else if ([contentStr checkHasContainsOneOfStrs:@[@"model.h\"", @"models.h\""]
                                  andNotContainsOneOfStrs:@[@"+"]]) {
             [self.modelArray addObject:invocation.buffer.lines[i]];
         } else if ([contentStr containsString:@"+"]) {
