@@ -90,7 +90,7 @@
         } else if ([contentStr checkHasContainsOneOfStrs:@[@"manager.h\"", @"logic.h\"", @"helper.h\""]
                                  andNotContainsOneOfStrs:@[@"+"]]) {
             [self.managerArray addObject:invocation.buffer.lines[i]];
-        } else if ([contentStr checkHasContainsOneOfStrs:@[@"controller.h\"", @"VC.h\"", @"Vc.h\""]
+        } else if ([contentStr checkHasContainsOneOfStrs:@[@"controller.h\"", @"VC.h\"", @"Vc.h\"", @"vc.h\""]
                                  andNotContainsOneOfStrs:@[@"+"]]) {
             [self.controllerArray addObject:invocation.buffer.lines[i]];
         } else if ([contentStr checkHasContainsOneOfStrs:@[@".h>"]
