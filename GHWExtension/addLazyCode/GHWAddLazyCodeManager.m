@@ -81,7 +81,7 @@
                     [self.delegateMethodsArray addObject:delegateMethodLinesArray];
                 }
             } else {
-                [self fixPropertyWithStartLine:startLine andEndLine:endLine andInvocation:invocation];
+                [self fixPropertyWithStartLine:i andEndLine:i andInvocation:invocation];
             }
 
         }
