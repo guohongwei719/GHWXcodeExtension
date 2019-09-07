@@ -49,5 +49,5 @@
 
 ## 五. 后记
 欢迎提 bug 和 feature。  
-微博：黑化肥发灰11  
+微博：[黑化肥发灰11](https://weibo.com/u/2977255324)   
 简书地址：[https://www.jianshu.com/u/fb5591dbd1bf](https://www.jianshu.com/u/fb5591dbd1bf)
