@@ -1,10 +1,12 @@
 # GHWXcodeExtension
 ### 目录
-[一. 实现的功能](https://github.com/guohongwei719/GHWXcodeExtension#%E4%B8%80-%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%8A%9F%E8%83%BD)  
-[二. 使用方法](https://github.com/guohongwei719/GHWXcodeExtension#%E4%BA%8C-%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95)  
-[三. 使用注意事项](https://github.com/guohongwei719/GHWXcodeExtension#%E4%B8%89-%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9)  
-[四. 调试 GHWXcodeExtension](https://github.com/guohongwei719/GHWXcodeExtension#%E5%9B%9B-%E8%B0%83%E8%AF%95-ghwxcodeextension)  
-[五. 后记](https://github.com/guohongwei719/GHWXcodeExtension#%E4%BA%94-%E5%90%8E%E8%AE%B0)
+
+[一. 背景](https://github.com/guohongwei719/GHWXcodeExtension#%E4%B8%80-%E8%83%8C%E6%99%AF)   
+[二. 实现的功能](https://github.com/guohongwei719/GHWXcodeExtension#%E4%B8%80-%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%8A%9F%E8%83%BD)  
+[三. 使用方法](https://github.com/guohongwei719/GHWXcodeExtension#%E4%BA%8C-%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95)  
+[四. 使用注意事项](https://github.com/guohongwei719/GHWXcodeExtension#%E4%B8%89-%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9)  
+[五. 调试 GHWXcodeExtension](https://github.com/guohongwei719/GHWXcodeExtension#%E5%9B%9B-%E8%B0%83%E8%AF%95-ghwxcodeextension)  
+[六. 后记](https://github.com/guohongwei719/GHWXcodeExtension#%E4%BA%94-%E5%90%8E%E8%AE%B0)
 
 ## 一. 背景
 平时写代码过程中发现有很多代码都是重复的，属于无脑代码，而且团队协作中代码格式规范非常重要，因此试图通过插件的形式解决这些问题，发现 Xcode source editor extension 很好用，可以解决这个问题，因此开发了这个工具。
