@@ -1,4 +1,11 @@
 # GHWXcodeExtension
+### 目录
+[一. 实现的功能](https://github.com/guohongwei719/GHWXcodeExtension#%E4%B8%80-%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%8A%9F%E8%83%BD)  
+[二. 使用方法](https://github.com/guohongwei719/GHWXcodeExtension#%E4%BA%8C-%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95)  
+[三. 使用注意事项](https://github.com/guohongwei719/GHWXcodeExtension#%E4%B8%89-%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9)  
+[四. 调试 GHWXcodeExtension](https://github.com/guohongwei719/GHWXcodeExtension#%E5%9B%9B-%E8%B0%83%E8%AF%95-ghwxcodeextension)  
+[五. 后记](https://github.com/guohongwei719/GHWXcodeExtension#%E4%BA%94-%E5%90%8E%E8%AE%B0)
+
 
 ## 一. 实现的功能
 #### 1. 初始化view、viewController，自动删除无用代码和添加默认代码；
@@ -31,7 +38,7 @@
 #### 6. 选择 GHWExtension，出现可以使用的功能选项，顾名思义
 ![](./resources/5.png)
 
-#### 7. 三个功能选项都可以配置快捷键，如下图
+#### 7. 三个功能选项都可以配置快捷键，推荐分别设置为 option+z\option+x\option+c，如下图
 ![](./resources/10.png)
 
 ## 三. 使用注意事项
