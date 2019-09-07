@@ -44,3 +44,7 @@
 #### 3. 选择一个项目
 ![](./resources/3.png)
 
+## 五. 后记
+欢迎提 bug 和 feature。  
+微博：黑化肥发灰11  
+简书地址：[https://www.jianshu.com/u/fb5591dbd1bf](https://www.jianshu.com/u/fb5591dbd1bf)
