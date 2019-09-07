@@ -42,7 +42,7 @@
 ![](./resources/10.png)
 
 ## 三. 使用注意事项
-#### 1. 使用 addLazyCode 功能的时候，如果添加了代码后想撤销，使用 command + z，这时候 Xcode 可能会 crash，这应该是 Xcode 本身的一个 bug，所以需要注意一下，正常情况下添加以后也不会撤销，如果要撤销手动删除也很方便。希望苹果能尽快修复这个 bug。
+#### 1. 使用 addLazyCode 功能的时候，如果添加了代码后想撤销，使用 command + z，这时候 Xcode 可能会 crash，这应该是 Xcode 本身的一个 bug，所以需要注意一下，正常情况下添加以后也不会撤销，如果要撤销手动删除也很方便，即使 crash 了再打开就行了，打开以后是删除状态。希望苹果能尽快修复这个 bug。
 
 ## 四. 调试 GHWXcodeExtension
 #### 1. 选择 GHWExtension scheme
