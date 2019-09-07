@@ -6,8 +6,9 @@
 [四. 调试 GHWXcodeExtension](https://github.com/guohongwei719/GHWXcodeExtension#%E5%9B%9B-%E8%B0%83%E8%AF%95-ghwxcodeextension)  
 [五. 后记](https://github.com/guohongwei719/GHWXcodeExtension#%E4%BA%94-%E5%90%8E%E8%AE%B0)
 
-
-## 一. 实现的功能
+## 一. 背景
+平时写代码过程中发现有很多代码都是重复的，属于无脑代码，而且团队协作中代码格式规范非常重要，因此试图通过插件的形式解决这些问题，发现 Xcode source editor extension 很好用，可以解决这个问题，因此开发了这个工具。
+## 二. 实现的功能
 #### 1. 初始化view、viewController，自动删除无用代码和添加默认代码；
 
 ![(image)](https://github.com/guohongwei719/GHWXcodeExtension/blob/master/resources/initView.gif)
@@ -21,7 +22,7 @@
   
 ![(image)](https://github.com/guohongwei719/GHWXcodeExtension/blob/master/resources/sortImport.gif)
 
-## 二. 使用方法
+## 三. 使用方法
 #### 1. 将项目 clone 下来
 #### 2. 编译成功，到 Products 下，选择 GHWXcodeExtension.app 右键，选择 Show in Finder
 ![](./resources/6.png)
@@ -41,10 +42,10 @@
 #### 7. 三个功能选项都可以配置快捷键，推荐分别设置为 option+z\option+x\option+c，如下图
 ![](./resources/10.png)
 
-## 三. 使用注意事项
+## 四. 使用注意事项
 #### 1. 使用 addLazyCode 功能的时候，如果添加了代码后想撤销，使用 command + z，这时候 Xcode 可能会 crash，这应该是 Xcode 本身的一个 bug，所以需要注意一下，正常情况下添加以后也不会撤销，如果要撤销手动删除也很方便，即使 crash 了再打开就行了，打开以后是删除状态。希望苹果能尽快修复这个 bug。
 
-## 四. 调试 GHWXcodeExtension
+## 五. 调试 GHWXcodeExtension
 #### 1. 选择 GHWExtension scheme
 ![](./resources/1.png)
 
@@ -54,7 +55,7 @@
 #### 3. 选择一个项目
 ![](./resources/3.png)
 
-## 五. 后记
+## 六. 后记
 欢迎提 bug 和 feature。  
 微博：[黑化肥发灰11](https://weibo.com/u/2977255324)   
 简书地址：[https://www.jianshu.com/u/fb5591dbd1bf](https://www.jianshu.com/u/fb5591dbd1bf)
