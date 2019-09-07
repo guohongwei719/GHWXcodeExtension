@@ -1,7 +1,7 @@
 # GHWXcodeExtension
 ### 目录
 
-[一. 前言](https://github.com/guohongwei719/GHWXcodeExtension#%E4%B8%80-%E8%83%8C%E6%99%AF)   
+[一. 前言](https://github.com/guohongwei719/GHWXcodeExtension#%E4%B8%80-%E5%89%8D%E8%A8%80)   
 [二. 实现的功能](https://github.com/guohongwei719/GHWXcodeExtension#%E4%BA%8C-%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%8A%9F%E8%83%BD)  
 [三. 使用方法](https://github.com/guohongwei719/GHWXcodeExtension#%E4%B8%89-%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95)  
 [四. 使用注意事项](https://github.com/guohongwei719/GHWXcodeExtension#%E5%9B%9B-%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9)  
