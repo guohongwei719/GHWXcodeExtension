@@ -1,9 +1,9 @@
 
-//  ASAutoLayoutViewCode.h
-//  
+//  GHWAddLazyCodeManager.h
+//  GHWExtension
 //
-//  Created by guohongwei on 2019/8/30.
-//  Copyright © 2019年 guohongwei. All rights reserved.
+//  Created by 黑化肥发灰 on 2019/8/30.
+//  Copyright © 2019年 黑化肥发灰. All rights reserved.
 
 
 #import <XcodeKit/XcodeKit.h>

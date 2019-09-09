@@ -1,16 +1,16 @@
 //
-//  ASAutoLayoutViewCode.m
-//  
+//  GHWAddLazyCodeManager.m
+//  GHWExtension
 //
-//  Created by guohongwei on 2019/8/30.
-//  Copyright © 2019年 guohongwei. All rights reserved.
+//  Created by 黑化肥发灰 on 2019/8/30.
+//  Copyright © 2019年 黑化肥发灰. All rights reserved.
 //
 
 #import "GHWAddLazyCodeManager.h"
 #import "NSString+Extension.h"
 #import "GHWExtensionConst.h"
 
-@interface GHWAddLazyCodeManager()
+@interface GHWAddLazyCodeManager ()
 
 @property (nonatomic, copy) NSMutableArray *lazyArray;
 @property (nonatomic, copy) NSMutableArray *delegateMethodsArray;
