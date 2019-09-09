@@ -49,7 +49,6 @@ static NSString * const kInitViewControllerLifeCycleCode = @"\n#pragma mark - Li
 /*******************************  addlazyCode  ******************************************/
 //自定义内容格式
 
-static NSString *const kASCommonFormater = @"\n- (%@ *)%@{\n    if (_%@ == nil) {\n        _%@ = [[%@ alloc] init];\n    }\n    return _%@;\n}";
 
 static NSString * const kAddLazyCodeTableViewDataSourceAndDelegate = @"\n#pragma mark - tableView DataSource\n\n- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {\n    return 5;\n}\n\n- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {\n    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@\"UITableViewCell\"];\n    if (indexPath.row % 2 == 0) {\n        cell.contentView.backgroundColor = [UIColor blueColor];\n     } else {\n        cell.contentView.backgroundColor = [UIColor redColor];\n    }\n    return cell;\n}\n\n#pragma mark - tableView Delegate\n\n- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {\n    return 60;\n}\n\n-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {\n\n}";
 
@@ -60,6 +59,9 @@ static NSString * const kAddLazyCodeUIScrollViewDelegate = @"#pragma mark - UISc
 //static NSString * const kLazyImageViewCode = @"- (%@ *)%@ {\n    if (!_%@) {\n        _%@ = [[%@ alloc] initWithImage:ni”;
 //
 //static NSString * const kLazyScrollViewCode = @"- (%@ *)%@ {\n    if (!_%@) {\n        _%@ = [[%@ alloc] init];\n        _%@.alwaysBounceVertical = YE";
+
+static NSString *const kASCommonFormater = @"\n- (%@ *)%@{\n    if (!_%@) {\n        _%@ = [[%@ alloc] init];\n    }\n    return _%@;\n}";
+
 
 static NSString * const kLazyImageViewCode = @"- (%@ *)%@ {\n    if (!_%@) {\n        _%@ = [[%@ alloc] initWithImage:nil];\n        _%@.contentMode = UIViewContentModeScaleAspectFill;\n        _%@.clipsToBounds = YES;\n    }\n    return _%@;\n}";
 
