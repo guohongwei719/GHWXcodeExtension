@@ -9,7 +9,7 @@
 [六. 后记](https://github.com/guohongwei719/GHWXcodeExtension#%E5%85%AD-%E5%90%8E%E8%AE%B0)
 
 ## 一. 前言
-平时写代码过程中发现有很多代码都是重复的，属于无脑代码，而且团队协作中代码格式规范非常重要，因此试图通过插件的形式解决这些问题，发现 Xcode source editor extension 很好用，可以解决这个问题，因此开发了这个工具，功能通过配置快捷键，一键操作很方便。
+在 Xcode8 以前，开发者可以在 Xccode 运行时通过注入代码来实现插件的功能。插件可以在Alcatraz 上面提交和分发。不过 Xcode8 禁止了该方式的插件安装，转而向开发者提供了Xcode Source Editor Extension（以下简称 Extension）的方式来做插件。平时写代码过程中发现有很多代码都是重复的，属于无脑代码，而且团队协作中统一的代码格式规范非常重要，因此试图通过 Extension 解决这些问题，从而开发了这个工具。
 ## 二. 实现的功能(注：均可配置快捷键，实现一键操作)
 #### 1. 初始化自定义view、UICollectionViewCell、UITableViewCell、viewController，自动删除无用代码和添加默认代码；
 
