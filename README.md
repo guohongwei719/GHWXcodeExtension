@@ -9,7 +9,7 @@
 [六. 后记](https://github.com/guohongwei719/GHWXcodeExtension#%E5%85%AD-%E5%90%8E%E8%AE%B0)
 
 ## 一. 前言
-平时写代码过程中发现有很多代码都是重复的，属于无脑代码，而且团队协作中代码格式规范非常重要，因此试图通过插件的形式解决这些问题，发现 Xcode source editor extension 很好用，可以解决这个问题，因此开发了这个工具。
+平时写代码过程中发现有很多代码都是重复的，属于无脑代码，而且团队协作中代码格式规范非常重要，因此试图通过插件的形式解决这些问题，发现 Xcode source editor extension 很好用，可以解决这个问题，因此开发了这个工具，功能通过配置快捷键，一键操作很方便。
 ## 二. 实现的功能
 #### 1. 初始化自定义view、UICollectionViewCell、UITableViewCell、viewController，自动删除无用代码和添加默认代码；
 
@@ -42,7 +42,7 @@
 #### 6. 选择 GHWExtension，出现可以使用的功能选项，顾名思义
 ![](./resources/5.png)
 
-#### 7. 三个功能选项都可以配置快捷键，推荐分别设置为 option+z\option+x\option+c，如下图
+#### 7. 三个功能选项都可以配置快捷键，实现一键操作，推荐分别设置为 option+z\option+x\option+c，如下图
 ![](./resources/10.png)
 
 ## 四. 使用注意事项
