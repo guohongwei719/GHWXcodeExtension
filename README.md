@@ -25,7 +25,7 @@
 ![(image)](https://github.com/guohongwei719/GHWXcodeExtension/blob/master/resources/sortImport.gif)
 
 ## 三. 安装配置方法
-#### 1. 将项目 clone 下来，如果不想 clone 项目，直接去 release 下面下载生成的 GHWXcodeExtension.zip，链接 [https://github.com/guohongwei719/GHWXcodeExtension/releases](https://github.com/guohongwei719/GHWXcodeExtension/releases)，解压即可，然后跳到第三步，如下图
+#### 1. 将项目 clone 下来，如果不想 clone 项目，直接去 release 下面下载生成的 GHWXcodeExtension.zip，链接 [https://github.com/guohongwei719/GHWXcodeExtension/releases/tag/v1.0.0](https://github.com/guohongwei719/GHWXcodeExtension/releases/tag/v1.0.0)，解压即可，然后跳到第三步，如下图
 ![](./resources/11.png)
 #### 2. 将 clone 的项目编译成功，到 Products 下，选择 GHWXcodeExtension.app 右键，选择 Show in Finder
 ![](./resources/6.png)
