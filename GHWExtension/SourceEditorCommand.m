@@ -28,8 +28,6 @@
         [[GHWInitViewManager sharedInstane] processCodeWithInvocation:invocation];
     } else if ([identifier hasPrefix:@"com.jingyao.GHWXcodeExtension.GHWExtension.addLazyCode"]) {
         [[GHWAddLazyCodeManager sharedInstane] processCodeWithInvocation:invocation];
-    } else if ([identifier hasPrefix:@"com.jingyao.GHWXcodeExtension.GHWExtension.addComment"]) {
-        [[GHWAddCommentManager sharedInstane] processCodeWithInvocation:invocation];
     }
     completionHandler(nil);
 }
