@@ -11,7 +11,7 @@
 ## 一. 前言
 平时写代码过程中发现有很多代码都是重复的，属于无脑代码，而且团队协作中代码格式规范非常重要，因此试图通过插件的形式解决这些问题，发现 Xcode source editor extension 很好用，可以解决这个问题，因此开发了这个工具。
 ## 二. 实现的功能
-#### 1. 初始化view、viewController，自动删除无用代码和添加默认代码；
+#### 1. 初始化自定义view、UICollectionViewCell、UITableViewCell、viewController，自动删除无用代码和添加默认代码；
 
 ![(image)](https://github.com/guohongwei719/GHWXcodeExtension/blob/master/resources/initView.gif)
 
