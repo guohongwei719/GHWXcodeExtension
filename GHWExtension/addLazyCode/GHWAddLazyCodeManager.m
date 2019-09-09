@@ -15,9 +15,6 @@
 @property (nonatomic, copy) NSMutableArray *lazyArray;
 @property (nonatomic, copy) NSMutableArray *delegateMethodsArray;
 
-//字符流的行数
-@property(nonatomic, assign) NSUInteger lineCount;
-
 @end
 
 @implementation GHWAddLazyCodeManager
