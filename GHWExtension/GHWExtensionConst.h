@@ -52,7 +52,7 @@ static NSString * const kAddLazyCodeUIScrollViewDelegate = @"#pragma mark - UISc
 //
 //static NSString * const kLazyScrollViewCode = @"- (%@ *)%@ {\n    if (!_%@) {\n        _%@ = [[%@ alloc] init];\n        _%@.alwaysBounceVertical = YE";
 
-static NSString *const kASCommonFormater = @"\n- (%@ *)%@{\n    if (!_%@) {\n        _%@ = [[%@ alloc] init];\n    }\n    return _%@;\n}";
+static NSString *const kLazyCommonCode = @"\n- (%@ *)%@ {\n    if (!_%@) {\n        _%@ = [[%@ alloc] init];\n    }\n    return _%@;\n}";
 
 
 static NSString * const kLazyImageViewCode = @"- (%@ *)%@ {\n    if (!_%@) {\n        _%@ = [[%@ alloc] initWithImage:nil];\n        _%@.contentMode = UIViewContentModeScaleAspectFill;\n        _%@.clipsToBounds = YES;\n    }\n    return _%@;\n}";

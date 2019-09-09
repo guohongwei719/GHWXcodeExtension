@@ -306,7 +306,7 @@
     }  else if ([className containsString:kUIImageView]) {
         str = [NSString stringWithFormat:kLazyImageViewCode, className, propertyName, propertyName, propertyName, className, propertyName, propertyName, propertyName];
     } else {
-        str = [NSString stringWithFormat:kASCommonFormater,className,propertyName,propertyName,propertyName,className,propertyName];
+        str = [NSString stringWithFormat:kLazyCommonCode,className,propertyName,propertyName,propertyName,className,propertyName];
     }
     NSArray *formaterArr = [[str componentsSeparatedByString:@"\n"] arrayByAddingObject:@""];
     return formaterArr;
