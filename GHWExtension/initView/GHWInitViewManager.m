@@ -70,7 +70,7 @@
                [className hasSuffix:@"VC"] ||
                [className hasSuffix:@"Vc"]) {
         // 添加 Life Cycle 代码
-        if ([invocation.buffer.lines indexOfFirstItemContainStr:@"#pragma mark - Setter / Getter"] == NSNotFound) {
+        if ([invocation.buffer.lines indexOfFirstItemContainStr:kGetterSetterPragmaMark] == NSNotFound) {
             [self deleteCodeWithInvocation:invocation];
             NSInteger lifeCycleIndex = [invocation.buffer.lines indexOfFirstItemContainStr:kImplementation];
             if (lifeCycleIndex != NSNotFound) {

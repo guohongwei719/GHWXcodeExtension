@@ -1,20 +1,11 @@
 //
 //  GHWExtensionConst.h
-//  ASXcodeSourceExtensioin
+//
 //
 //  Created by guohongwei on 2019/8/30.
 //  Copyright © 2019年 guohongwei. All rights reserved.
 //
 
-
-/*
- * 需要在如下标记下自动插入代码,可以根据业务需求自行更改标记内容。可以插入单个标记也可以插入多个标记同时自动生成代码
- *
- * kGetterSetterFormater     设置属性的懒加载方法标记格式
- * kAddSubviewFormater 设置UI控件添加
- * kMasonryFormater    设置UI控件设置布局
- * kInitFormater       设置UI控件初始化方法
-*/
 #import "NSString+Extension.h"
 #import "NSMutableArray+GHWExtension.h"
 
@@ -30,6 +21,7 @@ static NSString *const kUIImageView =  @"UIImageView";
 static NSString *const kImplementation = @"@implementation";
 static NSString *const kInterface = @"@interface";
 static NSString *const kEnd = @"@end";
+static NSString *const kGetterSetterPragmaMark = @"#pragma mark - Setter / Getter";
 
 
 /*******************************  addComment  ******************************************/

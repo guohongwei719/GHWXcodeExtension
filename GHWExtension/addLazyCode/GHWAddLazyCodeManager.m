@@ -1,6 +1,6 @@
 //
 //  ASAutoLayoutViewCode.m
-//  ASXcodeSourceExtensioin
+//  
 //
 //  Created by guohongwei on 2019/8/30.
 //  Copyright © 2019年 guohongwei. All rights reserved.
@@ -77,7 +77,7 @@
         
         
         //懒加载
-        NSArray *lazyGetArray = [self getterForClassName:classNameStr andPropertyName:propertyNameStr];
+        NSArray *lazyGetArray = [self fetchGetterForClassName:classNameStr andPropertyName:propertyNameStr];
         if (lazyGetArray.count > 1) {
             __block NSString *firstStr = lazyGetArray[1];
             [lazyGetArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -249,7 +249,7 @@
     NSString *currentClassName = [invocation.buffer.lines fetchCurrentClassNameWithCurrentIndex:startLine];
     NSInteger impIndex = [invocation.buffer.lines indexOfFirstItemContainStrsArray:@[kImplementation, currentClassName]];
     NSInteger endIndex = [invocation.buffer.lines indexOfFirstItemContainStr:kEnd fromIndex:impIndex];
-    NSInteger insertIndex = [invocation.buffer.lines indexOfFirstItemContainStr:@"#pragma mark - Setter / Getter" fromIndex:impIndex andToIndex:endIndex];
+    NSInteger insertIndex = [invocation.buffer.lines indexOfFirstItemContainStr:kGetterSetterPragmaMark fromIndex:impIndex andToIndex:endIndex];
     if (insertIndex == NSNotFound) {
         insertIndex = endIndex;
     } else {
@@ -277,7 +277,7 @@
     NSString *currentClassName = [invocation.buffer.lines fetchCurrentClassNameWithCurrentIndex:startLine];
     NSInteger impIndex = [invocation.buffer.lines indexOfFirstItemContainStrsArray:@[kImplementation, currentClassName]];
     NSInteger endIndex = [invocation.buffer.lines indexOfFirstItemContainStr:kEnd fromIndex:impIndex];
-    NSInteger insertIndex = [invocation.buffer.lines indexOfFirstItemContainStr:@"#pragma mark - Setter / Getter" fromIndex:impIndex andToIndex:endIndex];
+    NSInteger insertIndex = [invocation.buffer.lines indexOfFirstItemContainStr:kGetterSetterPragmaMark fromIndex:impIndex andToIndex:endIndex];
     if (insertIndex == NSNotFound) {
         insertIndex = endIndex;
     } else {
@@ -291,7 +291,7 @@
 }
 
 //懒加载
-- (NSArray *)getterForClassName:(NSString *)className andPropertyName:(NSString *)propertyName{
+- (NSArray *)fetchGetterForClassName:(NSString *)className andPropertyName:(NSString *)propertyName{
     NSString *str = @"";
     if ([className containsString:kUIButton]) {
         str = [NSString stringWithFormat:kLazyButtonCode, className, propertyName, propertyName, propertyName, className, propertyName, propertyName, propertyName, propertyName, propertyName];
