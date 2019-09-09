@@ -6,7 +6,7 @@
 [三. 安装配置方法](https://github.com/guohongwei719/GHWXcodeExtension#%E4%B8%89-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95)  
 [四. 使用注意事项](https://github.com/guohongwei719/GHWXcodeExtension#%E5%9B%9B-%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9)  
 [五. 调试 GHWXcodeExtension](https://github.com/guohongwei719/GHWXcodeExtension#%E4%BA%94-%E8%B0%83%E8%AF%95-ghwxcodeextension)  
-[六. 后记](https://github.com/guohongwei719/GHWXcodeExtension#%E4%BA%94-%E8%B0%83%E8%AF%95-ghwxcodeextension)
+[六. 后记](https://github.com/guohongwei719/GHWXcodeExtension#%E5%85%AD-%E5%90%8E%E8%AE%B0)
 
 ## 一. 前言
 平时写代码过程中发现有很多代码都是重复的，属于无脑代码，而且团队协作中代码格式规范非常重要，因此试图通过插件的形式解决这些问题，发现 Xcode source editor extension 很好用，可以解决这个问题，因此开发了这个工具，功能通过配置快捷键，一键操作很方便。
