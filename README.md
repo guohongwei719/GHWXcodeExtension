@@ -1,4 +1,4 @@
-# 推荐一个好用的 Xcode Extension：GHWXcodeExtension
+# 推荐一个好用的 Xcode 扩展：GHWXcodeExtension
 ### 目录
 
 [一. 前言](https://github.com/guohongwei719/GHWXcodeExtension#%E4%B8%80-%E5%89%8D%E8%A8%80)   
