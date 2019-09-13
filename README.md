@@ -16,13 +16,18 @@
 ![(image)](https://github.com/guohongwei719/GHWXcodeExtension/blob/master/resources/initView.gif)
 
 
-#### 2. 为属性自动添加懒加载代码、对应协议声明和协议方法，主要有 UITableView\UICollectionView\UIScrollView；  
+#### 2. 为属性自动添加懒加载代码、对应协议声明和协议方法，主要有 UITableView\UICollectionView\UIScrollView\UIButton\UILabel\UIImageView；  
 
 ![(image)](https://github.com/guohongwei719/GHWXcodeExtension/blob/master/resources/addLazyCode.gif)
 
 #### 3. 给 import 分组排序去重，从上到下为 主类头文件、viewController、view、manager & logic、第三方库、model、category、其他。
   
 ![(image)](https://github.com/guohongwei719/GHWXcodeExtension/blob/master/resources/sortImport.gif)
+
+注意：  
+viewController 后缀小写必须为 "controller.h"、"vc.h"；  
+view 后缀小写必须为 "view.h"、"bar.h"、"cell.h"；  
+manager & logic 后缀小写必须为"manager.h"、"logic.h"、"helper.h"、"services.h"、"service.h"
 
 ## 三. 安装配置方法
 #### 1. 将项目 clone 下来，如果不想 clone 项目，直接去 release 下面下载生成的 GHWXcodeExtension.zip，链接 [https://github.com/guohongwei719/GHWXcodeExtension/releases/tag/v1.0.0](https://github.com/guohongwei719/GHWXcodeExtension/releases/tag/v1.0.0)，解压即可，然后跳到第三步，如下图
