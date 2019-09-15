@@ -2,7 +2,7 @@
 //  GHWAddImportManager.m
 //  GHWExtension
 //
-//  Created by 郭宏伟 on 2019/9/15.
+//  Created by 黑化肥发灰 on 2019/9/15.
 //  Copyright © 2019 Jingyao. All rights reserved.
 //
 
