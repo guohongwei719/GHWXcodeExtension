@@ -24,7 +24,7 @@
 
 #### 3. 选中一个类，文件顶部自动添加对应的 import。
   
-![](resources/addImport.gif)
+![(image)](https://github.com/guohongwei719/GHWXcodeExtension/blob/master/resources/addImport.gif)
 
 #### 4. 给 import 分组排序去重，从上到下为 主类头文件、viewController、view、manager & logic、第三方库、model、category、其他。
   
