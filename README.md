@@ -53,7 +53,7 @@ manager & logic 后缀小写必须为"manager.h"、"logic.h"、"helper.h"、"ser
 #### 6. 选择 GHWExtension，出现可以使用的功能选项，顾名思义
 ![](./resources/5.png)
 
-#### 7. 三个功能选项都可以配置快捷键，实现一键操作，推荐分别设置为 option+z\option+x\option+c，如下图
+#### 7. 四个功能选项都可以配置快捷键，实现一键操作，推荐分别设置为 option+z\option+x\option+c\option+v，如下图
 ![](./resources/10.png)
 
 ## 四. 使用注意事项
