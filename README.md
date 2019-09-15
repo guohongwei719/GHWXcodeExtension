@@ -22,7 +22,11 @@
 
 注意：需要添加懒加载代码的属性需要被光标选中
 
-#### 3. 给 import 分组排序去重，从上到下为 主类头文件、viewController、view、manager & logic、第三方库、model、category、其他。
+#### 3. 选中一个类，文件顶部自动添加对应的 import。
+  
+![](resources/addImport.gif)
+
+#### 4. 给 import 分组排序去重，从上到下为 主类头文件、viewController、view、manager & logic、第三方库、model、category、其他。
   
 ![(image)](https://github.com/guohongwei719/GHWXcodeExtension/blob/master/resources/sortImport.gif)
 
