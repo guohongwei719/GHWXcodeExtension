@@ -10,7 +10,7 @@
 #import "GHWInitViewManager.h"
 #import "GHWAddLazyCodeManager.h"
 #import "GHWSortImportManager.h"
-#import "GHWAddCommentManager.h"
+#import "GHWAddImportManager.h"
 
 @implementation SourceEditorCommand
 
@@ -28,6 +28,8 @@
         [[GHWInitViewManager sharedInstane] processCodeWithInvocation:invocation];
     } else if ([identifier hasPrefix:@"com.jingyao.GHWXcodeExtension.GHWExtension.addLazyCode"]) {
         [[GHWAddLazyCodeManager sharedInstane] processCodeWithInvocation:invocation];
+    } else if ([identifier hasPrefix:@"com.jingyao.GHWXcodeExtension.GHWExtension.addImport"]) {
+        [[GHWAddImportManager sharedInstane] processCodeWithInvocation:invocation];
     }
     completionHandler(nil);
 }

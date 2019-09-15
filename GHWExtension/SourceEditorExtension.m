@@ -24,16 +24,20 @@
 
     
     return @[@{XCSourceEditorCommandClassNameKey: @"SourceEditorCommand",
-               XCSourceEditorCommandIdentifierKey: @"com.jingyao.GHWXcodeExtension.GHWExtension.sortImport",
-               XCSourceEditorCommandNameKey: @"sortImport"
-               },
-             @{XCSourceEditorCommandClassNameKey: @"SourceEditorCommand",
                XCSourceEditorCommandIdentifierKey: @"com.jingyao.GHWXcodeExtension.GHWExtension.initView",
                XCSourceEditorCommandNameKey: @"initView"
                },
              @{XCSourceEditorCommandClassNameKey: @"SourceEditorCommand",
                XCSourceEditorCommandIdentifierKey: @"com.jingyao.GHWXcodeExtension.GHWExtension.addLazyCode",
                XCSourceEditorCommandNameKey: @"addLazyCode"
+               },
+             @{XCSourceEditorCommandClassNameKey: @"SourceEditorCommand",
+               XCSourceEditorCommandIdentifierKey: @"com.jingyao.GHWXcodeExtension.GHWExtension.addImport",
+               XCSourceEditorCommandNameKey: @"addImport"
+               },
+             @{XCSourceEditorCommandClassNameKey: @"SourceEditorCommand",
+               XCSourceEditorCommandIdentifierKey: @"com.jingyao.GHWXcodeExtension.GHWExtension.sortImport",
+               XCSourceEditorCommandNameKey: @"sortImport"
                }];
 }
 

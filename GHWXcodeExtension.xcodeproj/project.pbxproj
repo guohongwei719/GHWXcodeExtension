@@ -22,6 +22,7 @@
 		EDA60A652317F43500B5FA3D /* GHWExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EDA60A562317F43500B5FA3D /* GHWExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EDA60A752317F4BF00B5FA3D /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA60A722317F4BF00B5FA3D /* NSString+Extension.m */; };
 		EDBFBD1D231FF38000490C20 /* GHWAddCommentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EDBFBD1C231FF38000490C20 /* GHWAddCommentManager.m */; };
+		EDC57717232E2EEB00445D4F /* GHWAddImportManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC57716232E2EEB00445D4F /* GHWAddImportManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,8 @@
 		EDA60A722317F4BF00B5FA3D /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
 		EDBFBD1B231FF38000490C20 /* GHWAddCommentManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GHWAddCommentManager.h; sourceTree = "<group>"; };
 		EDBFBD1C231FF38000490C20 /* GHWAddCommentManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GHWAddCommentManager.m; sourceTree = "<group>"; };
+		EDC57715232E2EEB00445D4F /* GHWAddImportManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GHWAddImportManager.h; sourceTree = "<group>"; };
+		EDC57716232E2EEB00445D4F /* GHWAddImportManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GHWAddImportManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +177,7 @@
 		EDA60A5A2317F43500B5FA3D /* GHWExtension */ = {
 			isa = PBXGroup;
 			children = (
+				EDC57714232E2EC100445D4F /* addImport */,
 				EDBFBD1A231FF35500490C20 /* addComment */,
 				ED6552322318FA500036A04A /* initView */,
 				ED65522B2318F98E0036A04A /* addLazyCode */,
@@ -208,6 +212,15 @@
 				EDBFBD1C231FF38000490C20 /* GHWAddCommentManager.m */,
 			);
 			path = addComment;
+			sourceTree = "<group>";
+		};
+		EDC57714232E2EC100445D4F /* addImport */ = {
+			isa = PBXGroup;
+			children = (
+				EDC57715232E2EEB00445D4F /* GHWAddImportManager.h */,
+				EDC57716232E2EEB00445D4F /* GHWAddImportManager.m */,
+			);
+			path = addImport;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,6 +336,7 @@
 				EDA60A5D2317F43500B5FA3D /* SourceEditorExtension.m in Sources */,
 				ED6552302318F98E0036A04A /* GHWAddLazyCodeManager.m in Sources */,
 				ED6552372318FB180036A04A /* GHWInitViewManager.m in Sources */,
+				EDC57717232E2EEB00445D4F /* GHWAddImportManager.m in Sources */,
 				EDA60A602317F43500B5FA3D /* SourceEditorCommand.m in Sources */,
 				ED65523A2318FBB70036A04A /* GHWSortImportManager.m in Sources */,
 				EDBFBD1D231FF38000490C20 /* GHWAddCommentManager.m in Sources */,
