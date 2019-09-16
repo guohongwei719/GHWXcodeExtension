@@ -9,8 +9,17 @@
 [六. 后记](https://github.com/guohongwei719/GHWXcodeExtension#%E5%85%AD-%E5%90%8E%E8%AE%B0)
 
 ## 一. 前言
-在 Xcode8 以前，开发者可以在 Xccode 运行时通过注入代码来实现插件的功能。插件可以在Alcatraz 上面提交和分发。不过 Xcode8 禁止了该方式的插件安装，转而向开发者提供了Xcode Source Editor Extension（以下简称 Extension）的方式来做插件。平时写代码过程中发现有很多代码都是重复的，属于无脑代码，而且团队协作中统一的代码格式规范非常重要，因此试图通过 Extension 解决这些问题，从而开发了这个工具。
-## 二. 实现的功能(注：均可配置快捷键，实现一键操作)
+在 Xcode8 以前，开发者可以在 Xccode 运行时通过注入代码来实现插件的功能。插件可以在Alcatraz 上面提交和分发。不过 Xcode8 禁止了该方式的插件安装，转而向开发者提供了Xcode Source Editor Extension（以下简称 Extension）的方式来做插件。平时写代码过程中发现有很多代码都是重复的，属于无脑代码，而且团队协作中统一的代码格式规范非常重要，因此试图通过 Extension 解决这些问题，从而开发了这个工具。  
+
+实现的功能：  
+
+1. 初始化自定义view、UICollectionViewCell、UITableViewCell、viewController，自动删除无用代码和添加默认代码；
+2. 为属性自动添加懒加载代码、对应协议声明和协议方法，主要有 UITableView\UICollectionView\UIScrollView\UIButton\UILabel\UIImageView；
+3. 选中一个类，文件顶部自动添加对应的 import；
+4. 给 import 分组排序去重，从上到下为 主类头文件、viewController、view、manager & logic、第三方库、model、category、其他。
+
+
+## 二. 功能演示(注：均可配置快捷键，实现一键操作)
 #### 1. 初始化自定义view、UICollectionViewCell、UITableViewCell、viewController，自动删除无用代码和添加默认代码；
 
 ![(image)](https://github.com/guohongwei719/GHWXcodeExtension/blob/master/resources/initView.gif)
@@ -22,7 +31,7 @@
 
 注意：需要添加懒加载代码的属性需要被光标选中
 
-#### 3. 选中一个类，文件顶部自动添加对应的 import。
+#### 3. 选中一个类，文件顶部自动添加对应的 import；
   
 ![(image)](https://github.com/guohongwei719/GHWXcodeExtension/blob/master/resources/addImport.gif)
 
