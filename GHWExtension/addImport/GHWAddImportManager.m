@@ -54,7 +54,8 @@
     if (alreadyIndex != NSNotFound) {
         return;
     }
-    [invocation.buffer.lines insertObject:insertStr atIndex:(lastImportIndex + 1)];
+    
+    [invocation.buffer.lines insertObject:insertStr atIndex:lastImportIndex == 0 ? lastImportIndex : (lastImportIndex + 1)];
 }
 
 @end
