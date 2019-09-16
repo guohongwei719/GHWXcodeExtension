@@ -42,7 +42,7 @@
     }
     NSString *insertStr = [NSString stringWithFormat:@"#import \"%@.h\"", selectContentStr];
     
-    NSInteger lastImportIndex = 0;
+    NSInteger lastImportIndex = -1;
     for (NSInteger i = 0; i < [invocation.buffer.lines count]; i++) {
         NSString *contentStr = [invocation.buffer.lines[i] deleteSpaceAndNewLine];
         if ([contentStr hasPrefix:@"#import"]) {
@@ -55,7 +55,11 @@
         return;
     }
     
-    [invocation.buffer.lines insertObject:insertStr atIndex:lastImportIndex == 0 ? lastImportIndex : (lastImportIndex + 1)];
+    NSInteger insertIndex = 0;
+    if (lastImportIndex != -1) {
+        insertIndex = lastImportIndex + 1;
+    }
+    [invocation.buffer.lines insertObject:insertStr atIndex:insertIndex];
 }
 
 @end
