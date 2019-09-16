@@ -2,7 +2,7 @@
 ### 目录
 
 [一. 前言](https://github.com/guohongwei719/GHWXcodeExtension#%E4%B8%80-%E5%89%8D%E8%A8%80)   
-[二. 实现的功能(注：均可配置快捷键，实现一键操作)](https://github.com/guohongwei719/GHWXcodeExtension#%E4%BA%8C-%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%8A%9F%E8%83%BD%E6%B3%A8%E5%9D%87%E5%8F%AF%E9%85%8D%E7%BD%AE%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%AE%9E%E7%8E%B0%E4%B8%80%E9%94%AE%E6%93%8D%E4%BD%9C)  
+[二. 功能演示(注：均可配置快捷键，实现一键操作)](https://github.com/guohongwei719/GHWXcodeExtension#%E4%BA%8C-%E5%8A%9F%E8%83%BD%E6%BC%94%E7%A4%BA%E6%B3%A8%E5%9D%87%E5%8F%AF%E9%85%8D%E7%BD%AE%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%AE%9E%E7%8E%B0%E4%B8%80%E9%94%AE%E6%93%8D%E4%BD%9C)  
 [三. 安装配置方法](https://github.com/guohongwei719/GHWXcodeExtension#%E4%B8%89-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95)  
 [四. 使用注意事项](https://github.com/guohongwei719/GHWXcodeExtension#%E5%9B%9B-%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9)  
 [五. 调试 GHWXcodeExtension](https://github.com/guohongwei719/GHWXcodeExtension#%E4%BA%94-%E8%B0%83%E8%AF%95-ghwxcodeextension)  
