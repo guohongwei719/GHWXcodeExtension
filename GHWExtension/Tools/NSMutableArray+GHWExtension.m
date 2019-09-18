@@ -40,6 +40,7 @@
 
         if (isOk) {
             index = i;
+            break;
         }
         
     }
