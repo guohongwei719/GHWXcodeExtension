@@ -40,9 +40,11 @@
 ![(image)](https://github.com/guohongwei719/GHWXcodeExtension/blob/master/resources/sortImport.gif)
 
 注意：  
-viewController 后缀小写必须为 "controller.h"、"vc.h"；  
-view 后缀小写必须为 "view.h"、"bar.h"、"cell.h"；  
-manager & logic 后缀小写必须为"manager.h"、"logic.h"、"helper.h"、"services.h"、"service.h"。
+
+1. 如果不选中对应的 import 则默认是所有 import 行，如果选中的话则只会对选中的 import 分组排序去重  
+2. viewController 后缀小写必须为 "controller.h"、"vc.h"；  
+3. view 后缀小写必须为 "view.h"、"bar.h"、"cell.h"；  
+4. manager & logic 后缀小写必须为"manager.h"、"logic.h"、"helper.h"、"services.h"、"service.h"。
 
 ## 三. 安装配置方法
 #### 1. 将项目 clone 下来，如果不想 clone 项目，直接去 release 下面下载生成的 GHWXcodeExtension.zip，链接 [https://github.com/guohongwei719/GHWXcodeExtension/releases](https://github.com/guohongwei719/GHWXcodeExtension/releases)，解压即可，然后跳到第三步，如下图
