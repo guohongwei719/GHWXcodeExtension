@@ -21,7 +21,7 @@
     } else {
         arr = [self componentsSeparatedByString:leftStr];
         if (arr.count > 1) {
-            NSArray * subArr = [arr[1] componentsSeparatedByString:rightStr];
+            NSArray * subArr = [arr.lastObject componentsSeparatedByString:rightStr];
             if (subArr.count > 0) {
                 str = subArr.firstObject;
                 if ([str containsString:@"_"]) {
