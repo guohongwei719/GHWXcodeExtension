@@ -16,11 +16,13 @@
 		EDA60A452317F41000B5FA3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDA60A442317F41000B5FA3D /* Assets.xcassets */; };
 		EDA60A482317F41000B5FA3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA60A462317F41000B5FA3D /* Main.storyboard */; };
 		EDA60A4B2317F41000B5FA3D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA60A4A2317F41000B5FA3D /* main.m */; };
-		EDA60A592317F43500B5FA3D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA60A582317F43500B5FA3D /* Cocoa.framework */; };
 		EDA60A5D2317F43500B5FA3D /* SourceEditorExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA60A5C2317F43500B5FA3D /* SourceEditorExtension.m */; };
 		EDA60A602317F43500B5FA3D /* SourceEditorCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA60A5F2317F43500B5FA3D /* SourceEditorCommand.m */; };
 		EDA60A652317F43500B5FA3D /* GHWExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EDA60A562317F43500B5FA3D /* GHWExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EDA60A752317F4BF00B5FA3D /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA60A722317F4BF00B5FA3D /* NSString+Extension.m */; };
+		EDAB4ADD25F3D0D100342C7A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA60A582317F43500B5FA3D /* Cocoa.framework */; };
+		EDAB4ADF25F3D0D900342C7A /* XcodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAB4ADE25F3D0D900342C7A /* XcodeKit.framework */; };
+		EDAB4AE025F3D0D900342C7A /* XcodeKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EDAB4ADE25F3D0D900342C7A /* XcodeKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EDBFBD1D231FF38000490C20 /* GHWAddCommentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EDBFBD1C231FF38000490C20 /* GHWAddCommentManager.m */; };
 		EDC57717232E2EEB00445D4F /* GHWAddImportManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC57716232E2EEB00445D4F /* GHWAddImportManager.m */; };
 /* End PBXBuildFile section */
@@ -45,6 +47,17 @@
 				EDA60A652317F43500B5FA3D /* GHWExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDAB4AE125F3D0D900342C7A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				EDAB4AE025F3D0D900342C7A /* XcodeKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -79,6 +92,7 @@
 		EDA60A622317F43500B5FA3D /* GHWExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GHWExtension.entitlements; sourceTree = "<group>"; };
 		EDA60A712317F4BF00B5FA3D /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
 		EDA60A722317F4BF00B5FA3D /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
+		EDAB4ADE25F3D0D900342C7A /* XcodeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XcodeKit.framework; path = Library/Frameworks/XcodeKit.framework; sourceTree = DEVELOPER_DIR; };
 		EDBFBD1B231FF38000490C20 /* GHWAddCommentManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GHWAddCommentManager.h; sourceTree = "<group>"; };
 		EDBFBD1C231FF38000490C20 /* GHWAddCommentManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GHWAddCommentManager.m; sourceTree = "<group>"; };
 		EDC57715232E2EEB00445D4F /* GHWAddImportManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GHWAddImportManager.h; sourceTree = "<group>"; };
@@ -97,7 +111,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDA60A592317F43500B5FA3D /* Cocoa.framework in Frameworks */,
+				EDAB4ADD25F3D0D100342C7A /* Cocoa.framework in Frameworks */,
+				EDAB4ADF25F3D0D900342C7A /* XcodeKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,6 +184,7 @@
 		EDA60A572317F43500B5FA3D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EDAB4ADE25F3D0D900342C7A /* XcodeKit.framework */,
 				EDA60A582317F43500B5FA3D /* Cocoa.framework */,
 			);
 			name = Frameworks;
@@ -252,6 +268,7 @@
 				EDA60A522317F43500B5FA3D /* Sources */,
 				EDA60A532317F43500B5FA3D /* Frameworks */,
 				EDA60A542317F43500B5FA3D /* Resources */,
+				EDAB4AE125F3D0D900342C7A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -484,7 +501,7 @@
 				CODE_SIGN_ENTITLEMENTS = GHWXcodeExtension/GHWXcodeExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 2HMG43AYW9;
+				DEVELOPMENT_TEAM = 45KX2E2Q3S;
 				INFOPLIST_FILE = GHWXcodeExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -503,7 +520,7 @@
 				CODE_SIGN_ENTITLEMENTS = GHWXcodeExtension/GHWXcodeExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 2HMG43AYW9;
+				DEVELOPMENT_TEAM = 45KX2E2Q3S;
 				INFOPLIST_FILE = GHWXcodeExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -522,7 +539,7 @@
 				CODE_SIGN_ENTITLEMENTS = GHWExtension/GHWExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 2HMG43AYW9;
+				DEVELOPMENT_TEAM = 45KX2E2Q3S;
 				INFOPLIST_FILE = GHWExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -543,7 +560,7 @@
 				CODE_SIGN_ENTITLEMENTS = GHWExtension/GHWExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 2HMG43AYW9;
+				DEVELOPMENT_TEAM = 45KX2E2Q3S;
 				INFOPLIST_FILE = GHWExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
